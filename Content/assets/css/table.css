@@ -1,31 +1,35 @@
 
 .table {
-    
-    color: #fff;
+    color: #000;
     width: 100%;
     table-layout: fixed;
 }
 
-.admin-table{
-    background: -webkit-linear-gradient(left, #25c481, #25b7c4);
-    background: linear-gradient(to right, #25c481, #25b7c4);
+.admin-table {
     width: 90%;
     margin-inline: auto;
+    box-shadow: 1px 2px 4px 2px rgba(0,0,0,0.1);
 }
-
+/*
 ::-webkit-scrollbar {
     width: 12px;
-} 
+}
+
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-} 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
 ::-webkit-scrollbar-thumb {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-    background: linear-gradient(to right, var(--primary), var(--secondary));
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background: linear-gradient(to right, var(--primary), var(--secondary));*/
 }
 
 .table__head-wrapper {
     background-color: rgba(255, 255, 255, 0.3);
+}
+
+.table__head {
+    background: linear-gradient(to right, #25c481, #25b7c4);
 }
 
 .table__body-wrapper {
@@ -57,26 +61,27 @@
 }
 
 @media only screen and (max-width: 1023px) {
-    .table thead{
+    .table thead {
         display: none;
     }
 
-    .table, .table tbody, .table tr, .table td{
+    .table, .table tbody, .table tr, .table td {
         display: block;
         width: 100%;
     }
 
-    .table td{
-        text-align: right;
-        position: relative;
-        padding-left: 50%;
-    }
-    
-    tr:nth-child(2n+1){
+        .table td {
+            text-align: right;
+            position: relative;
+            padding-left: 50%;
+        }
+
+    tr:nth-child(2n+1) {
         background: linear-gradient(to left, #25c481, #25b7c4);
+        color: #fff;
     }
 
-    .table td::before{
+    .table td::before {
         content: attr(data-label);
         position: absolute;
         left: 0;

@@ -5,15 +5,25 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>FishType</h2>
+<script>
+    $.ajax({
+        type: 'GET',
+        data: {},
+        url: '/Fish/FishTypes',
+        success: function (data) {
+            $('#fish-type__list').html(data)
+        }
+    })
+</script>
+
+<h2>Loại cá giống</h2>
 
 @using (Html.BeginForm("FishType"))
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>loai_ca_giong</h4>
-        <hr />
+    <div class="form-horizontal d-flex justify-content-start">
+        <h4>lThêm loại cá</h4>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         
 
@@ -27,9 +37,11 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Thêm" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
+
+<div id="fish-type__list" style="color: #000;"></div>
 

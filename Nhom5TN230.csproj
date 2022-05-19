@@ -275,6 +275,9 @@
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Fish\FishType.cshtml" />
+    <Content Include="Views\Fish\FishTypes.cshtml" />
+    <Content Include="Views\Fish\ds_Ca_Giong.cshtml" />
+    <Content Include="Views\Fish\tao_Ca_Giong.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
