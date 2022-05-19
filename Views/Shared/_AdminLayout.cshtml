@@ -1,0 +1,100 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/assets/css/grid.css">
+    <link rel="stylesheet" href="~/Content/assets/css/main.css">
+    <link rel="stylesheet" href="~/Content/assets/css/table.css">
+    <link rel="stylesheet" href="~/Content/assets/css/responsive.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <button id="sidebar__toggle-btn" class="sidebar__toggle">
+                <i class="fa-solid fa-circle-chevron-right sidebar__toggle-icon"></i>
+            </button>
+            <div class="sidebar__top">
+                <div class="sidebar__logo">
+                    <img src="~/Content/assets/img/logo.png" alt="" class="sidebar__logo-img">
+                </div>
+            </div>
+
+            <div class="sidebar__mid">
+                <ul class="sidebar__group">
+                    <li class="sidebar__item">
+                        <a href="/" class="sidebar__link">
+                            <i class="fa-solid fa-compass sidebar__item-icon"></i>
+                            <span class="sidebar__item-title">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="/" class="sidebar__link">
+                            <i class="fa-solid fa-fish-fins sidebar__item-icon"></i>
+                            <span class="sidebar__item-title">Loại cá</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="/" class="sidebar__link">
+                            <i class="fa-solid fa-fish sidebar__item-icon"></i>
+                            <span class="sidebar__item-title">Cá</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="sidebar__group">
+                    <li class="sidebar__item">
+                        <a href="/" class="sidebar__link">
+                            <i class="fa-solid fa-cart-plus sidebar__item-icon"></i>
+                            <span class="sidebar__item-title" data-title="Dashboard">Quản lý đơn</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="/" class="sidebar__link">
+                            <i class="fa-solid fa-compass sidebar__item-icon"></i>
+                            <span class="sidebar__item-title">Loại cá</span>
+                        </a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="/" class="sidebar__link">
+                            <i class="fa-solid fa-compass sidebar__item-icon"></i>
+                            <span class="sidebar__item-title">Cá</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar__bottom">
+                <div class="sidebar__group">
+                    <a href="/" class="sidebar__logout sidebar__link">
+                        <i class="fa-solid fa-arrow-right-from-bracket sidebar__logout-icon sidebar__item-icon"></i>
+                        <span class="sidebar__item-title">Đăng xuất</span>
+                    </a>
+                </div>
+
+            </div>
+        </aside>
+
+        <div id="admin-content">
+            @RenderBody()
+        </div>
+    </div>
+
+    <script src="~/Content/assets/js/admin.js"></script>
+</body>
+
+</html>

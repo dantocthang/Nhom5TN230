@@ -1,0 +1,110 @@
+﻿
+<header class="header">
+    <div class="header__top">
+        <div class="grid wide">
+            <div class="header__top">
+                <div class="header__address">
+                    <i class="fa-solid fa-location-dot header__address-icon"></i>
+                    <span>Khu II, đường 3/2, P. Xuân Khánh, Q. Ninh Kiều, TP. Cần Thơ</span>
+                </div>
+                <div class="header__contact">
+                    <i class="fa-solid fa-headphones-simple header__contact-icon"></i>
+                    <span>cagiongcantho@gmail.com</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="header__main">
+        <div class="grid wide">
+            <div class="header__main-inner">
+                <label for="menu-btn" class="mobile-icon open-icon hide-on-pc"><i class="fa-solid fa-bars"></i></label>
+                <div class="header__logo">
+                    <img src="~/Content/assets/img/logo.png" alt="Logo" class="header__logo-img">
+                </div>
+                <nav class="header__nav">
+                    <ul class="header__nav-list">
+                        <li class="header__nav-item">
+                            <a href="" class="header__nav-link">Trang chủ</a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a href="" class="header__nav-link">Loại cá</a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a href="" class="header__nav-link">Sản phẩm</a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a href="" class="header__nav-link">Dịch vụ</a>
+                        </li>
+                        <li class="header__nav-item">
+                            <a href="" class="header__nav-link">Hướng dẫn</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header__tools">
+                    <a href="/" class="header__tools-item">
+                        <i class="fa-solid fa-magnifying-glass header__tools-icon"></i>
+                    </a>
+                    <div class="header__tools-item">
+                        <i class="fa-solid fa-cart-shopping header__tools-icon"></i>
+                        <div class="header__cart-expand">
+                            <ul class="header__cart-list">
+                                <li class="header__cart-item">
+                                    <a href="/" class="header__cart-link">
+                                        <img src="~/Content/assets/img/logo.png" alt="" class="header__cart-img">
+                                        <div class="header__cart-name">
+                                            Ca dat nhat the gioi
+                                        </div>
+                                        <div class="header__cart-quantity">x3</div>
+                                        <div class="header__cart-price">300 USD</div>
+                                    </a>
+                                </li>
+                                <li class="header__cart-item">
+                                    <a href="/" class="header__cart-link">
+                                        <img src="~/Content/assets/img/logo.png" alt="" class="header__cart-img">
+                                        <div class="header__cart-name">
+                                            Ca dat nhat the gioi
+                                        </div>
+                                        <div class="header__cart-quantity">x3</div>
+                                        <div class="header__cart-price">300 USD</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    @{
+                        if (Session["userSession"] != null)
+                        {
+                            <div class="header__tools-item">
+                                <i class="fa-solid fa-user-large header__tools-icon"></i>
+                                <div class="header__user-expand">
+                                    <p>Hello @Session["userSession"].ToString()</p>
+                                    <a href="/Home/Logout">Đăng xuất</a>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <a href="/Home/Login" class="header__tools-item">
+                                <i class="fa-solid fa-user-large header__tools-icon"></i>
+                                
+                            </a>
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<input type="checkbox" name="menu-btn" id="menu-btn" hidden>
+<div class="mobile-header">
+    <label for="menu-btn" class="mobile-icon close-icon"><i class="fa-solid fa-xmark"></i></label>
+    <ul class="mobile-nav">
+        <li class="mobile-nav-item"><a href="/" class="mobile-nav-link">Trang chủ</a></li>
+        <li class="mobile-nav-item"><a href="/" class="mobile-nav-link">Bảng giá</a></li>
+        <li class="mobile-nav-item"><a href="/" class="mobile-nav-link">Đăng nhập</a></li>
+    </ul>
+</div>

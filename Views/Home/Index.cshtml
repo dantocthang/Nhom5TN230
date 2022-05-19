@@ -1,0 +1,319 @@
+﻿@model IEnumerable<Nhom5TN230.ca_giong>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+<div class="intro">
+    <img src="~/Content/assets/img/backgroud.jpg" alt="" class="intro__image" data-aos="zoom-out">
+    <div class="intro__sologan">The best fish market in VietNam</div>
+    <div class="intro__text">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi molestias veritatis
+        est. Obcaecati aut eaque enim ducimus beatae impedit reiciendis.
+    </div>
+    <div class="button-groups">
+        <button class="intro__btn intro__btn--primary">
+            Explore <i class="fa-solid fa-arrow-right-long"></i>
+        </button>
+        <button class="intro__btn intro__btn--outline">Watch video <i class="fa-solid fa-play"></i></button>
+    </div>
+
+    <div class="banner">
+        <ul class="banner__list" data-aos="zoom-in">
+            <li class="banner__item">
+                <div class="banner__item-image">
+                    <i class="fa-solid fa-award"></i>
+                </div>
+                <div class="banner__item-info">
+                    <div class="banner__item-heading">Certified Farm</div>
+                    <div class="banner__item-text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </div>
+                </div>
+            </li>
+            <li class="banner__item">
+                <div class="banner__item-image">
+                    <i class="fa-solid fa-fish-fins"></i>
+                </div>
+                <div class="banner__item-info">
+                    <div class="banner__item-heading">Certified Farm</div>
+                    <div class="banner__item-text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </div>
+                </div>
+            </li>
+            <li class="banner__item">
+                <div class="banner__item-image">
+                    <i class="fa-brands fa-autoprefixer"></i>
+                </div>
+                <div class="banner__item-info">
+                    <div class="banner__item-heading">Certified Farm</div>
+                    <div class="banner__item-text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="about">
+    <div class="grid wide">
+        <div class="about__inner row">
+            <div class="about__image col l-5">
+                <img src="~/Content/assets/img/about.jpg" alt="" class="about__img" data-aos="fade-right">
+            </div>
+            <div class="about__info col l-7" data-aos="fade-left">
+                <div class="about__heading">About us <i class="fa-solid fa-tornado"></i></div>
+                <div class="about__sologan">Chất lượng tuyệt vời với kinh nghiệm chăn cá giống đặc thù</div>
+                <div class="about__text">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo
+                    doloribus quasi voluptas commodi ullam vel.
+                </div>
+                <div class="about__quality">
+                    <div class="about__advantages">
+                        <ul class="about__advantages-list">
+                            <li class="about__advantages-item">
+                                <i class="fa-solid fa-square-check"></i>
+                                <span>Sức khỏe cá luôn là tốt nhất</span>
+                            </li>
+                            <li class="about__advantages-item">
+                                <i class="fa-solid fa-square-check"></i>
+                                <span>Giá cả cạnh tranh</span>
+                            </li>
+                            <li class="about__advantages-item">
+                                <i class="fa-solid fa-square-check"></i>
+                                <span>Đa dạng về chủng loại</span>
+                            </li>
+                            <li class="about__advantages-item">
+                                <i class="fa-solid fa-square-check"></i>
+                                <span>Đội ngũ hỗ trợ</span>
+                            </li>
+                        </ul>
+                        <button class="intro__btn intro__btn--primary mobile-button">
+                            Explore <i class="fa-solid fa-arrow-right-long"></i>
+                        </button>
+                    </div>
+                    <div class="about__graphs">
+                        <div class="about__graph">
+
+                        </div>
+                        <div class="about__graph-label">Mức độ hài lòng của khách hàng</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="products">
+    <div class="grid wide">
+        <div class="products__inner">
+            <div class="products__heading">Nổi bật</div>
+            <div class="products__sologan">Top lựa chọn bởi khách hàng</div>
+            <ul class="products__list row" data-aos="fade-up" data-aos-duration="1300">
+                <li class="products__item col l-3 m-4 c-6">
+                    <span class="products__type">Cá cảnh</span>
+                    <div class="products__name">Cá La Hán</div>
+                    <div class="product__price">1.490.000 VND</div>
+                    <div class="products__image">
+                        <img src="~/Content/assets/img/products/la_han.jpg" alt="" class="products__img">
+                        <div class="products__sale">-10%</div>
+                    </div>
+                </li>
+                <li class="products__item col l-3 m-4 c-6">
+                    <span class="products__type">Cá nước ngọt</span>
+                    <div class="products__name">Cá lóc Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet..</div>
+                    <div class="product__price">30.000 VND</div>
+                    <div class="products__image">
+                        <img src="~/Content/assets/img/products/caloc.jpg" alt="" class="products__img">
+                        <div class="products__sale">-0%</div>
+                    </div>
+                </li>
+                <li class="products__item col l-3 m-4 c-6">
+                    <span class="products__type">Cá cảnh</span>
+                    <div class="products__name">Cá vàng</div>
+                    <div class="product__price">80.000 VND</div>
+                    <div class="products__image">
+                        <img src="~/Content/assets/img/products/cavang.jpg" alt="" class="products__img">
+                        <div class="products__sale">-5%</div>
+                    </div>
+                </li>
+                <li class="products__item col l-3 m-4 c-6">
+                    <span class="products__type">Predator</span>
+                    <div class="products__name">Cá mập</div>
+                    <div class="product__price">&infin; VND</div>
+                    <div class="products__image">
+                        <img src="~/Content/assets/img/products/camap.jpg" alt="" class="products__img">
+                        <div class="products__sale">-999%</div>
+                    </div>
+                </li>
+                <li class="products__item col l-3 m-4 c-6">
+                    <span class="products__type">Wifu</span>
+                    <div class="products__name">Cá "Người"</div>
+                    <div class="product__price">--ERROR-- VND</div>
+                    <div class="products__image">
+                        <img src="~/Content/assets/img/products/nguoica.jpg" alt="" class="products__img">
+                        <div class="products__sale">+10 tỷ</div>
+                    </div>
+                </li>
+                <li class="products__item col l-3 m-4 c-6">
+                    <span class="products__type">Legendary</span>
+                    <div class="products__name">Leviathan</div>
+                    <div class="product__price">-100HP VND</div>
+                    <div class="products__image">
+                        <img src="~/Content/assets/img/products/leviathan.jpg" alt="" class="products__img">
+                        <!-- <div class="products__sale">-999%</div> -->
+                    </div>
+                </li>
+                <li class="products__item col l-3 m-4 c-6">
+                    <span class="products__type">Cá nước mặn</span>
+                    <div class="products__name">Cá hồi Sapa</div>
+                    <div class="product__price">949.000 VND</div>
+                    <div class="products__image">
+                        <img src="~/Content/assets/img/products/cahoi.jpg" alt="" class="products__img">
+                        <div class="products__sale">-1%</div>
+                    </div>
+                </li>
+                <li class="products__item col l-3 m-4 c-6">
+                    <span class="products__type">Cá nước mặn</span>
+                    <div class="products__name">Cá người real</div>
+                    <div class="product__price">136.000 VND</div>
+                    <div class="products__image">
+                        <img src="~/Content/assets/img/products/canguoi.jpg" alt="" class="products__img">
+                        <div class="products__sale">-23%</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="tutorial">
+    <div class="grid wide">
+        <div class="tutorial__inner">
+            <div class="tutorial__heading">Hướng dẫn <i class="fa-solid fa-feather-pointed"></i></div>
+            <div class="tutorial__wrapper">
+                <div class="tutorial__primary">Kiến thức nuôi cá cơ bản</div>
+                <div class="tutorial__text">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus
+                    aliquid et, velit totam exercitationem pariatur.
+                </div>
+            </div>
+            <ul class="tutorial__list">
+                <li class="tutorial__item">
+                    <div class="tutorial__item-heading">Cách chọn thức ăn cho cá</div>
+                    <div class="tutorial__item-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="tutorial__item-content">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla expedita dignissimos est
+                        odio eveniet voluptatibus voluptas ex quidem iure laboriosam?
+                    </div>
+                </li>
+                <li class="tutorial__item" data-aos="flip-down" data-aos-delay="300">
+                    <div class="tutorial__item-heading">Cách chọn thức ăn cho cá</div>
+                    <div class="tutorial__item-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="tutorial__item-content">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla expedita dignissimos est
+                        odio eveniet voluptatibus voluptas ex quidem iure laboriosam?
+                    </div>
+                </li>
+                <li class="tutorial__item" data-aos="flip-down" data-aos-delay="600">
+                    <div class="tutorial__item-heading">Cách chọn thức ăn cho cá</div>
+                    <div class="tutorial__item-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="tutorial__item-content">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla expedita dignissimos est
+                        odio eveniet voluptatibus voluptas ex quidem iure laboriosam?
+                    </div>
+                </li>
+                <li class="tutorial__item" data-aos="flip-down" data-aos-delay="900">
+                    <div class="tutorial__item-heading">Cách chọn thức ăn cho cá</div>
+                    <div class="tutorial__item-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="tutorial__item-content">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla expedita dignissimos est
+                        odio eveniet voluptatibus voluptas ex quidem iure laboriosam?
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ma)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayTuoi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.loai_ca_giong_Ma)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ma)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoTa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayTuoi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.loai_ca_giong_Ma)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
+</table>*@

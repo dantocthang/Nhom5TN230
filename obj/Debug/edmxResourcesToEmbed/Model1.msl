@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FishMarketModelStoreContainer" CdmEntityContainer="FishMarketEntities">
+    <EntitySetMapping Name="ca_giong">
+      <EntityTypeMapping TypeName="FishMarketModel.ca_giong">
+        <MappingFragment StoreEntitySet="ca_giong">
+          <ScalarProperty Name="Ma" ColumnName="Ma" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="NgayTuoi" ColumnName="NgayTuoi" />
+          <ScalarProperty Name="loai_ca_giong_Ma" ColumnName="loai_ca_giong_Ma" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="chi_tiet_don_dat">
+      <EntityTypeMapping TypeName="FishMarketModel.chi_tiet_don_dat">
+        <MappingFragment StoreEntitySet="chi_tiet_don_dat">
+          <ScalarProperty Name="ca_giong_Ma" ColumnName="ca_giong_Ma" />
+          <ScalarProperty Name="don_dat_Ma" ColumnName="don_dat_Ma" />
+          <ScalarProperty Name="SoLuongDat" ColumnName="SoLuongDat" />
+          <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="don_dat">
+      <EntityTypeMapping TypeName="FishMarketModel.don_dat">
+        <MappingFragment StoreEntitySet="don_dat">
+          <ScalarProperty Name="Ma" ColumnName="Ma" />
+          <ScalarProperty Name="NgayDat" ColumnName="NgayDat" />
+          <ScalarProperty Name="NgayHuy" ColumnName="NgayHuy" />
+          <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+          <ScalarProperty Name="khach_hang_Ma" ColumnName="khach_hang_Ma" />
+          <ScalarProperty Name="nhan_vien_Ma" ColumnName="nhan_vien_Ma" />
+          <ScalarProperty Name="trang_thai_Ma" ColumnName="trang_thai_Ma" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hinh_anh">
+      <EntityTypeMapping TypeName="FishMarketModel.hinh_anh">
+        <MappingFragment StoreEntitySet="hinh_anh">
+          <ScalarProperty Name="Ma" ColumnName="Ma" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="ca_giong_Ma" ColumnName="ca_giong_Ma" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hoa_don">
+      <EntityTypeMapping TypeName="FishMarketModel.hoa_don">
+        <MappingFragment StoreEntitySet="hoa_don">
+          <ScalarProperty Name="Ma" ColumnName="Ma" />
+          <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
+          <ScalarProperty Name="don_dat_Ma" ColumnName="don_dat_Ma" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="khach_hang">
+      <EntityTypeMapping TypeName="FishMarketModel.khach_hang">
+        <MappingFragment StoreEntitySet="khach_hang">
+          <ScalarProperty Name="Ma" ColumnName="Ma" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="TenTK" ColumnName="TenTK" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="loai_ca_giong">
+      <EntityTypeMapping TypeName="FishMarketModel.loai_ca_giong">
+        <MappingFragment StoreEntitySet="loai_ca_giong">
+          <ScalarProperty Name="Ma" ColumnName="Ma" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nhan_vien">
+      <EntityTypeMapping TypeName="FishMarketModel.nhan_vien">
+        <MappingFragment StoreEntitySet="nhan_vien">
+          <ScalarProperty Name="Ma" ColumnName="Ma" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="quyen_Ma" ColumnName="quyen_Ma" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="quyens">
+      <EntityTypeMapping TypeName="FishMarketModel.quyen">
+        <MappingFragment StoreEntitySet="quyen">
+          <ScalarProperty Name="Ma" ColumnName="Ma" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trang_thai">
+      <EntityTypeMapping TypeName="FishMarketModel.trang_thai">
+        <MappingFragment StoreEntitySet="trang_thai">
+          <ScalarProperty Name="Ma" ColumnName="Ma" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

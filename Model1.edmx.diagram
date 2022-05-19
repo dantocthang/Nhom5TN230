@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ca81d320249749fbb3256b8060a503f5" Name="Diagram1">
+        <EntityTypeShape EntityType="FishMarketModel.ca_giong" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="FishMarketModel.chi_tiet_don_dat" Width="1.5" PointX="7.5" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FishMarketModel.don_dat" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FishMarketModel.hinh_anh" Width="1.5" PointX="7.5" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FishMarketModel.hoa_don" Width="1.5" PointX="7.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FishMarketModel.khach_hang" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="FishMarketModel.loai_ca_giong" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FishMarketModel.nhan_vien" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FishMarketModel.quyen" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FishMarketModel.trang_thai" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <AssociationConnector Association="FishMarketModel.FK__ca_giong__loai_c__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="FishMarketModel.FK__chi_tiet___ca_gi__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="FishMarketModel.FK__hinh_anh__ca_gio__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="FishMarketModel.FK__chi_tiet___don_d__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="FishMarketModel.FK__don_dat__khach_h__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="FishMarketModel.FK__don_dat__nhan_vi__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="FishMarketModel.FK__don_dat__trang_t__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="FishMarketModel.FK__hoa_don__don_dat__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="FishMarketModel.FK__nhan_vien__quyen__31EC6D26" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

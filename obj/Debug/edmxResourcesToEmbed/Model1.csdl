@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FishMarketModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ca_giong">
+    <Key>
+      <PropertyRef Name="Ma" />
+    </Key>
+    <Property Name="Ma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="NgayTuoi" Type="Int32" />
+    <Property Name="loai_ca_giong_Ma" Type="Int32" />
+    <NavigationProperty Name="loai_ca_giong" Relationship="Self.FK__ca_giong__loai_c__267ABA7A" FromRole="ca_giong" ToRole="loai_ca_giong" />
+    <NavigationProperty Name="chi_tiet_don_dat" Relationship="Self.FK__chi_tiet___ca_gi__398D8EEE" FromRole="ca_giong" ToRole="chi_tiet_don_dat" />
+    <NavigationProperty Name="hinh_anh" Relationship="Self.FK__hinh_anh__ca_gio__29572725" FromRole="ca_giong" ToRole="hinh_anh" />
+  </EntityType>
+  <EntityType Name="chi_tiet_don_dat">
+    <Key>
+      <PropertyRef Name="ca_giong_Ma" />
+      <PropertyRef Name="don_dat_Ma" />
+    </Key>
+    <Property Name="ca_giong_Ma" Type="Int32" Nullable="false" />
+    <Property Name="don_dat_Ma" Type="Int32" Nullable="false" />
+    <Property Name="SoLuongDat" Type="Int32" />
+    <Property Name="DonGia" Type="Int64" />
+    <NavigationProperty Name="ca_giong" Relationship="Self.FK__chi_tiet___ca_gi__398D8EEE" FromRole="chi_tiet_don_dat" ToRole="ca_giong" />
+    <NavigationProperty Name="don_dat" Relationship="Self.FK__chi_tiet___don_d__3A81B327" FromRole="chi_tiet_don_dat" ToRole="don_dat" />
+  </EntityType>
+  <EntityType Name="don_dat">
+    <Key>
+      <PropertyRef Name="Ma" />
+    </Key>
+    <Property Name="Ma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NgayDat" Type="DateTime" Precision="0" />
+    <Property Name="NgayHuy" Type="DateTime" Precision="0" />
+    <Property Name="TongTien" Type="Int64" />
+    <Property Name="khach_hang_Ma" Type="Int32" />
+    <Property Name="nhan_vien_Ma" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="trang_thai_Ma" Type="Int32" />
+    <NavigationProperty Name="chi_tiet_don_dat" Relationship="Self.FK__chi_tiet___don_d__3A81B327" FromRole="don_dat" ToRole="chi_tiet_don_dat" />
+    <NavigationProperty Name="khach_hang" Relationship="Self.FK__don_dat__khach_h__34C8D9D1" FromRole="don_dat" ToRole="khach_hang" />
+    <NavigationProperty Name="nhan_vien" Relationship="Self.FK__don_dat__nhan_vi__35BCFE0A" FromRole="don_dat" ToRole="nhan_vien" />
+    <NavigationProperty Name="trang_thai" Relationship="Self.FK__don_dat__trang_t__36B12243" FromRole="don_dat" ToRole="trang_thai" />
+    <NavigationProperty Name="hoa_don" Relationship="Self.FK__hoa_don__don_dat__3D5E1FD2" FromRole="don_dat" ToRole="hoa_don" />
+  </EntityType>
+  <EntityType Name="hinh_anh">
+    <Key>
+      <PropertyRef Name="Ma" />
+    </Key>
+    <Property Name="Ma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ca_giong_Ma" Type="Int32" />
+    <NavigationProperty Name="ca_giong" Relationship="Self.FK__hinh_anh__ca_gio__29572725" FromRole="hinh_anh" ToRole="ca_giong" />
+  </EntityType>
+  <EntityType Name="hoa_don">
+    <Key>
+      <PropertyRef Name="Ma" />
+    </Key>
+    <Property Name="Ma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NgayLap" Type="DateTime" Precision="0" />
+    <Property Name="don_dat_Ma" Type="Int32" />
+    <NavigationProperty Name="don_dat" Relationship="Self.FK__hoa_don__don_dat__3D5E1FD2" FromRole="hoa_don" ToRole="don_dat" />
+  </EntityType>
+  <EntityType Name="khach_hang">
+    <Key>
+      <PropertyRef Name="Ma" />
+    </Key>
+    <Property Name="Ma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TenTK" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MatKhau" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="don_dat" Relationship="Self.FK__don_dat__khach_h__34C8D9D1" FromRole="khach_hang" ToRole="don_dat" />
+  </EntityType>
+  <EntityType Name="loai_ca_giong">
+    <Key>
+      <PropertyRef Name="Ma" />
+    </Key>
+    <Property Name="Ma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ca_giong" Relationship="Self.FK__ca_giong__loai_c__267ABA7A" FromRole="loai_ca_giong" ToRole="ca_giong" />
+  </EntityType>
+  <EntityType Name="nhan_vien">
+    <Key>
+      <PropertyRef Name="Ma" />
+    </Key>
+    <Property Name="Ma" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ten" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="MatKhau" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="quyen_Ma" Type="Int32" />
+    <NavigationProperty Name="don_dat" Relationship="Self.FK__don_dat__nhan_vi__35BCFE0A" FromRole="nhan_vien" ToRole="don_dat" />
+    <NavigationProperty Name="quyen" Relationship="Self.FK__nhan_vien__quyen__31EC6D26" FromRole="nhan_vien" ToRole="quyen" />
+  </EntityType>
+  <EntityType Name="quyen">
+    <Key>
+      <PropertyRef Name="Ma" />
+    </Key>
+    <Property Name="Ma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="nhan_vien" Relationship="Self.FK__nhan_vien__quyen__31EC6D26" FromRole="quyen" ToRole="nhan_vien" />
+  </EntityType>
+  <EntityType Name="trang_thai">
+    <Key>
+      <PropertyRef Name="Ma" />
+    </Key>
+    <Property Name="Ma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="don_dat" Relationship="Self.FK__don_dat__trang_t__36B12243" FromRole="trang_thai" ToRole="don_dat" />
+  </EntityType>
+  <Association Name="FK__ca_giong__loai_c__267ABA7A">
+    <End Role="loai_ca_giong" Type="Self.loai_ca_giong" Multiplicity="0..1" />
+    <End Role="ca_giong" Type="Self.ca_giong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="loai_ca_giong">
+        <PropertyRef Name="Ma" />
+      </Principal>
+      <Dependent Role="ca_giong">
+        <PropertyRef Name="loai_ca_giong_Ma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__chi_tiet___ca_gi__398D8EEE">
+    <End Role="ca_giong" Type="Self.ca_giong" Multiplicity="1" />
+    <End Role="chi_tiet_don_dat" Type="Self.chi_tiet_don_dat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ca_giong">
+        <PropertyRef Name="Ma" />
+      </Principal>
+      <Dependent Role="chi_tiet_don_dat">
+        <PropertyRef Name="ca_giong_Ma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hinh_anh__ca_gio__29572725">
+    <End Role="ca_giong" Type="Self.ca_giong" Multiplicity="0..1" />
+    <End Role="hinh_anh" Type="Self.hinh_anh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ca_giong">
+        <PropertyRef Name="Ma" />
+      </Principal>
+      <Dependent Role="hinh_anh">
+        <PropertyRef Name="ca_giong_Ma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__chi_tiet___don_d__3A81B327">
+    <End Role="don_dat" Type="Self.don_dat" Multiplicity="1" />
+    <End Role="chi_tiet_don_dat" Type="Self.chi_tiet_don_dat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="don_dat">
+        <PropertyRef Name="Ma" />
+      </Principal>
+      <Dependent Role="chi_tiet_don_dat">
+        <PropertyRef Name="don_dat_Ma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__don_dat__khach_h__34C8D9D1">
+    <End Role="khach_hang" Type="Self.khach_hang" Multiplicity="0..1" />
+    <End Role="don_dat" Type="Self.don_dat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="khach_hang">
+        <PropertyRef Name="Ma" />
+      </Principal>
+      <Dependent Role="don_dat">
+        <PropertyRef Name="khach_hang_Ma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__don_dat__nhan_vi__35BCFE0A">
+    <End Role="nhan_vien" Type="Self.nhan_vien" Multiplicity="0..1" />
+    <End Role="don_dat" Type="Self.don_dat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nhan_vien">
+        <PropertyRef Name="Ma" />
+      </Principal>
+      <Dependent Role="don_dat">
+        <PropertyRef Name="nhan_vien_Ma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__don_dat__trang_t__36B12243">
+    <End Role="trang_thai" Type="Self.trang_thai" Multiplicity="0..1" />
+    <End Role="don_dat" Type="Self.don_dat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trang_thai">
+        <PropertyRef Name="Ma" />
+      </Principal>
+      <Dependent Role="don_dat">
+        <PropertyRef Name="trang_thai_Ma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hoa_don__don_dat__3D5E1FD2">
+    <End Role="don_dat" Type="Self.don_dat" Multiplicity="0..1" />
+    <End Role="hoa_don" Type="Self.hoa_don" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="don_dat">
+        <PropertyRef Name="Ma" />
+      </Principal>
+      <Dependent Role="hoa_don">
+        <PropertyRef Name="don_dat_Ma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__nhan_vien__quyen__31EC6D26">
+    <End Role="quyen" Type="Self.quyen" Multiplicity="0..1" />
+    <End Role="nhan_vien" Type="Self.nhan_vien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="quyen">
+        <PropertyRef Name="Ma" />
+      </Principal>
+      <Dependent Role="nhan_vien">
+        <PropertyRef Name="quyen_Ma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FishMarketEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ca_giong" EntityType="Self.ca_giong" />
+    <EntitySet Name="chi_tiet_don_dat" EntityType="Self.chi_tiet_don_dat" />
+    <EntitySet Name="don_dat" EntityType="Self.don_dat" />
+    <EntitySet Name="hinh_anh" EntityType="Self.hinh_anh" />
+    <EntitySet Name="hoa_don" EntityType="Self.hoa_don" />
+    <EntitySet Name="khach_hang" EntityType="Self.khach_hang" />
+    <EntitySet Name="loai_ca_giong" EntityType="Self.loai_ca_giong" />
+    <EntitySet Name="nhan_vien" EntityType="Self.nhan_vien" />
+    <EntitySet Name="quyens" EntityType="Self.quyen" />
+    <EntitySet Name="trang_thai" EntityType="Self.trang_thai" />
+    <AssociationSet Name="FK__ca_giong__loai_c__267ABA7A" Association="Self.FK__ca_giong__loai_c__267ABA7A">
+      <End Role="loai_ca_giong" EntitySet="loai_ca_giong" />
+      <End Role="ca_giong" EntitySet="ca_giong" />
+    </AssociationSet>
+    <AssociationSet Name="FK__chi_tiet___ca_gi__398D8EEE" Association="Self.FK__chi_tiet___ca_gi__398D8EEE">
+      <End Role="ca_giong" EntitySet="ca_giong" />
+      <End Role="chi_tiet_don_dat" EntitySet="chi_tiet_don_dat" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hinh_anh__ca_gio__29572725" Association="Self.FK__hinh_anh__ca_gio__29572725">
+      <End Role="ca_giong" EntitySet="ca_giong" />
+      <End Role="hinh_anh" EntitySet="hinh_anh" />
+    </AssociationSet>
+    <AssociationSet Name="FK__chi_tiet___don_d__3A81B327" Association="Self.FK__chi_tiet___don_d__3A81B327">
+      <End Role="don_dat" EntitySet="don_dat" />
+      <End Role="chi_tiet_don_dat" EntitySet="chi_tiet_don_dat" />
+    </AssociationSet>
+    <AssociationSet Name="FK__don_dat__khach_h__34C8D9D1" Association="Self.FK__don_dat__khach_h__34C8D9D1">
+      <End Role="khach_hang" EntitySet="khach_hang" />
+      <End Role="don_dat" EntitySet="don_dat" />
+    </AssociationSet>
+    <AssociationSet Name="FK__don_dat__nhan_vi__35BCFE0A" Association="Self.FK__don_dat__nhan_vi__35BCFE0A">
+      <End Role="nhan_vien" EntitySet="nhan_vien" />
+      <End Role="don_dat" EntitySet="don_dat" />
+    </AssociationSet>
+    <AssociationSet Name="FK__don_dat__trang_t__36B12243" Association="Self.FK__don_dat__trang_t__36B12243">
+      <End Role="trang_thai" EntitySet="trang_thai" />
+      <End Role="don_dat" EntitySet="don_dat" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hoa_don__don_dat__3D5E1FD2" Association="Self.FK__hoa_don__don_dat__3D5E1FD2">
+      <End Role="don_dat" EntitySet="don_dat" />
+      <End Role="hoa_don" EntitySet="hoa_don" />
+    </AssociationSet>
+    <AssociationSet Name="FK__nhan_vien__quyen__31EC6D26" Association="Self.FK__nhan_vien__quyen__31EC6D26">
+      <End Role="quyen" EntitySet="quyens" />
+      <End Role="nhan_vien" EntitySet="nhan_vien" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,168 @@
+/* Mobile */
+@media screen and (max-width: 740px) {
+
+    .intro,
+    .about,
+    .products,
+    .tutorial,
+    .contact,
+    .footer {
+        padding-inline: 1rem;
+    }
+
+    .header__nav {
+        display: none;
+    }
+
+    
+
+    .header__address {
+        display: none;
+    }
+
+    .header__tools {
+        margin-right: 1rem;
+    }
+
+    .header__tools-item:nth-child(3) {
+        display: none;
+    }
+
+    .button-groups {
+        flex-direction: column;
+    }
+
+    .banner {
+        bottom: -240px;
+    }
+
+    .banner__list {
+        flex-direction: column;
+    }
+
+    .about {
+        margin-top: 300px;
+    }
+
+    .about__text {
+        text-align: center;
+    }
+
+    .about__quality {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .about__advantages {
+        align-items: center;
+    }
+
+    .mobile-button {
+        width: 100%;
+    }
+
+    .tutorial__wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .tutorial__heading {
+        text-align: center;
+    }
+
+    .contact {
+        height: fit-content;
+        padding-block: 1rem;
+    }
+
+    .contact__list {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .contact__item:first-child {
+        align-self: center;
+    }
+
+    .footer__inner {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .footer__socials-list {
+        justify-content: space-around;
+    }
+
+    .slider__button {
+        color: var(--primary);
+        border-color: aquamarine;
+    }
+
+    .product__price {
+        font-size: 1.2rem;
+    }
+
+}
+
+/* Tablet */
+@media screen and (min-width: 741px) and (max-width: 1023px) {
+    .header__nav {
+        display: none;
+    }
+
+    .contact {
+        height: fit-content;
+    }
+
+    .contact__list {
+        margin-inline: auto;
+        display: grid;
+        width: 100%;
+        grid-template-columns: 1fr;
+        grid-template-rows: 100px 80px 80px 80px;
+        place-items: center;
+    }
+}
+
+/* Tablet and mobile */
+@media screen and (max-width: 1024px) {
+    
+    .intro__sologan {
+        background-image: url('../img/slogan-background.jpg');
+        background-size: cover;
+        -webkit-background-clip: text;
+        color: transparent;
+        text-shadow: -2px -1px 69px #e7f9fd;    
+    }
+
+    .header__top {
+        padding-block: 0.2rem;
+        flex-direction: column;
+    }
+
+    .fish__inner{
+        flex-direction:column;
+        gap: 2rem;
+    }
+
+    .fish{
+        padding: 0 10px;
+    }
+}
+
+/* LowRes PC */
+@media screen and (min-width: 1024px) and (max-width: 1264px) {
+    .fish__inner{
+        box-sizing: border-box;
+    }
+}
+
+/* PC */
+@media screen and (min-width: 1024px) {
+    .hide-on-pc {
+        display: none;
+    }
+
+
+}

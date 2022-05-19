@@ -1,0 +1,126 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+    <link href="images/favicon.png" rel="icon" />
+    <title>Oxyy - Login and Register Form Html Template</title>
+    <meta name="description" content="Login and Register Form Html Template">
+    <meta name="author" content="harnishdesign.net">
+
+    <!-- Web Fonts
+    ========================= -->
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900'
+          type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Stylesheet
+    ========================= -->
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/bootstrap.min.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="vendor/font-awesome/css/all.min.css" /> -->
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/login.css" />
+    <!-- Colors Css -->
+    <link id="color-switcher" type="text/css" rel="stylesheet" href="#" />
+</head>
+
+<body>
+
+    <!-- Preloader -->
+    <div class="preloader preloader-dark">
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- Preloader End -->
+
+    <div id="main-wrapper" class="oxyy-login-register">
+        <div class="container">
+            <div class="row g-0 min-vh-100 py-4 py-md-5">
+                <!-- Welcome Text
+                ========================= -->
+                <div class="col-lg-7 shadow-lg ">
+                    <div class="hero-wrap d-flex align-items-center rounded-3 rounded-end-0 h-100">
+                        <div class="hero-mask opacity-9 "></div>
+                        <div class="hero-bg hero-bg-scroll" style="background-image:url('/Content/assets/img/backgroud.jpg');">
+                        </div>
+                        <div class="hero-content mx-auto w-100 h-100 d-flex flex-column">
+                            <div class="row g-0">
+                                <div class="col-11 col-lg-10 mx-auto">
+                                     
+                                </div>
+                            </div>
+                            <div class="row g-0 my-auto">
+                                <div class="col-11 col-lg-10 mx-auto">
+                                    <h1 class="text-11 text-white mb-3">Welcome back!</h1>
+                                    <p class="text-5 text-white lh-base mb-4">Địa điểm bán cá giống đáng tin cậy</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Welcome Text End -->
+                <!-- Login Form
+                ========================= -->
+                @RenderBody()
+                <!-- Login Form End -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Modal
+    ========================= -->
+    <div class="modal fade" id="videoModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content bg-transparent border-0">
+                <button type="button" class="btn-close btn-close-white ms-auto me-n3" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                <div class="modal-body p-0">
+                    <div class="ratio ratio-16x9">
+                        <iframe id="video" allow="autoplay" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Video Modal end -->
+    <!-- Styles Switcher -->
+    <div id="styles-switcher" class="left">
+        <h5>Color Switcher</h5>
+        <hr>
+        <ul class="mb-0">
+            <li class="blue" data-bs-toggle="tooltip" title="Blue" data-path="#"></li>
+            <li class="indigo" data-bs-toggle="tooltip" title="Indigo" data-path="css/color-indigo.css"></li>
+            <li class="purple" data-bs-toggle="tooltip" title="Purple" data-path="css/color-purple.css"></li>
+            <li class="pink" data-bs-toggle="tooltip" title="Pink" data-path="css/color-pink.css"></li>
+            <li class="red" data-bs-toggle="tooltip" title="Red" data-path="css/color-red.css"></li>
+            <li class="orange" data-bs-toggle="tooltip" title="Orange" data-path="css/color-orange.css"></li>
+            <li class="yellow" data-bs-toggle="tooltip" title="Yellow" data-path="css/color-yellow.css"></li>
+            <li class="teal" data-bs-toggle="tooltip" title="Teal" data-path="css/color-teal.css"></li>
+            <li class="green" data-bs-toggle="tooltip" title="Green" data-path="css/color-green.css"></li>
+            <li class="cyan" data-bs-toggle="tooltip" title="Cyan" data-path="css/color-cyan.css"></li>
+            <li class="brown" data-bs-toggle="tooltip" title="Brown" data-path="css/color-brown.css"></li>
+        </ul>
+        <button class="btn switcher-toggle"><i class="fas fa-cog"></i></button>
+    </div>
+    <!-- Styles Switcher End -->
+    <!-- Script -->
+    <script src="~/Content/assets/js/bootstrap.bundle.min.js"></script>
+    <!-- Style Switcher -->
+    <script src="~/Content/assets/js/jquery.min.js"></script>
+    <script src="~/Content/assets/js/switcher.min.js"></script>
+    <script src="~/Content/assets/js/theme.js"></script>
+</body>
+
+</html>
+
