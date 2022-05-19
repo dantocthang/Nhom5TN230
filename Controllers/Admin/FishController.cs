@@ -45,6 +45,12 @@ namespace Nhom5TN230.Controllers.Admin
             return View("FishType", lcg);
         }
 
+        public ActionResult EditFishType(int id)
+        {
+            var ft = db.loai_ca_giong.Find(id);
+            return View(ft);
+        }
+
 
         // Section Cá giống
         public ActionResult ds_Ca_Giong()

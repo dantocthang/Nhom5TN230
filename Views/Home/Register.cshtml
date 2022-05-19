@@ -15,136 +15,73 @@
         <div class="row">
             <div class="col-11 col-lg-10 mx-auto">
                 <h3 class="text-dark text-center mb-4">Đăng ký</h3>
-                <form id="loginForm" class="form-dark" method="POST" action="/Home/Register">
+                @*<form id="registerForm" class="form-dark" method="POST" action="/Home/Register">*@
+                @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { @class = "form-dark", @id = "registerForm" }))
+                {
+                    @Html.AntiForgeryToken()
                     <div class="mb-3">
-                        <label class="form-label text-dark" for="username">Số điện thoại</label>
-                        <input type="text" class="form-control" id="username" required
-                               placeholder="Tên đăng nhập">
+                        <label class="form-label text-dark" for="SDT">Số điện thoại</label>
+                        @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control", @placeholder = "Số điện thoại", @id = "SDT" } })
+                        @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
                     </div>
                     <div class="mb-3">
-                        <label class="form-label text-dark" for="username">Tên đăng nhập</label>
-                        <input type="text" class="form-control" id="username" name="username" required
-                               placeholder="Tên đăng nhập">
+                        <label class="form-label text-dark" for="TenTK">Tên đăng nhập</label>
+                        @Html.EditorFor(model => model.TenTK, new { htmlAttributes = new { @class = "form-control", @placeholder = "Tên đăng nhập", @id = "TenTK" } })
+                        @Html.ValidationMessageFor(model => model.TenTK, "", new { @class = "text-danger" })
                     </div>
                     <div class="mb-3">
-                        <label class="form-label text-dark" for="username">Mật khẩu</label>
-                        <input type="password" class="form-control" id="username" required
-                               placeholder="Tên đăng nhập">
+                        <label class="form-label text-dark" for="MatKhau">Mật khẩu</label>
+                        @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control", @placeholder = "Mật khẩu", @id = "MatKhau", name = "MatKhau", type = "password" } })
+                        @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
                     </div>
                     <div class="mb-3">
-                        <label class="form-label text-dark" for="password">Xác nhận mật khẩu</label>
-                        <input type="password" class="form-control" id="password" required
-                               placeholder="Mật khẩu">
+                        <label class="form-label text-dark" for="NhapLaiMatKhau">Xác nhận mật khẩu</label>
+                        <input type="password" class="form-control" id="NhapLaiMatKhau" name="NhapLaiMatKhau"
+                               placeholder="Nhập lại mật khẩu">
+                        <span class="text-danger">@ViewBag.errorNhapLaiMatKhau</span>
                     </div>
 
                     <div class="d-grid my-4">
                         <button class="btn btn-primary" type="submit">Đăng ký</button>
                     </div>
-                </form>
-                <div class="d-flex align-items-center my-3">
-                    <hr class="flex-grow-1 bg-dark-4">
-                    <span class="mx-2 text-2 text-muted">Or with Social Profile</span>
-                    <hr class="flex-grow-1 bg-dark-4">
-                </div>
-                <div class="d-flex flex-column align-items-center mb-4">
-                    <ul class="social-icons social-icons-circle">
-                        <li class="social-icons-facebook">
-                            <a href="#" data-bs-toggle="tooltip"
-                               data-bs-original-title="Log In with Facebook">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                        </li>
-                        <li class="social-icons-twitter">
-                            <a href="#" data-bs-toggle="tooltip"
-                               data-bs-original-title="Log In with Twitter">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                        </li>
-                        <li class="social-icons-google">
-                            <a href="#" data-bs-toggle="tooltip"
-                               data-bs-original-title="Log In with Google">
-                                <i class="fab fa-google"></i>
-                            </a>
-                        </li>
-                        <li class="social-icons-linkedin">
-                            <a href="#" data-bs-toggle="tooltip"
-                               data-bs-original-title="Log In with Linkedin">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+
+                    <div class="d-flex align-items-center my-3">
+                        <hr class="flex-grow-1 bg-dark-4">
+                        <span class="mx-2 text-2 text-muted">Or with Social Profile</span>
+                        <hr class="flex-grow-1 bg-dark-4">
+                    </div>
+                    <div class="d-flex flex-column align-items-center mb-4">
+                        <ul class="social-icons social-icons-circle">
+                            <li class="social-icons-facebook">
+                                <a href="#" data-bs-toggle="tooltip"
+                                   data-bs-original-title="Log In with Facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li class="social-icons-twitter">
+                                <a href="#" data-bs-toggle="tooltip"
+                                   data-bs-original-title="Log In with Twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li class="social-icons-google">
+                                <a href="#" data-bs-toggle="tooltip"
+                                   data-bs-original-title="Log In with Google">
+                                    <i class="fab fa-google"></i>
+                                </a>
+                            </li>
+                            <li class="social-icons-linkedin">
+                                <a href="#" data-bs-toggle="tooltip"
+                                   data-bs-original-title="Log In with Linkedin">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                }
+
             </div>
         </div>
     </div>
-</div>
-
-
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>khach_hang</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Ma, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Ma, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Ma, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Ten, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Ten, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Ten, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.SDT, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.TenTK, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TenTK, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TenTK, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.MatKhau, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
