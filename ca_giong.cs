@@ -27,6 +27,7 @@ namespace Nhom5TN230
         public Nullable<int> SoLuong { get; set; }
         public Nullable<int> NgayTuoi { get; set; }
         public Nullable<int> loai_ca_giong_Ma { get; set; }
+        public Nullable<long> Gia { get; set; }
     
         public virtual loai_ca_giong loai_ca_giong { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

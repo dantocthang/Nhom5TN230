@@ -10,6 +10,7 @@
     <Property Name="SoLuong" Type="int" />
     <Property Name="NgayTuoi" Type="int" />
     <Property Name="loai_ca_giong_Ma" Type="int" />
+    <Property Name="Gia" Type="bigint" />
   </EntityType>
   <EntityType Name="chi_tiet_don_dat">
     <Key>

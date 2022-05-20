@@ -4,6 +4,7 @@
     <EntitySetMapping Name="ca_giong">
       <EntityTypeMapping TypeName="FishMarketModel.ca_giong">
         <MappingFragment StoreEntitySet="ca_giong">
+          <ScalarProperty Name="Gia" ColumnName="Gia" />
           <ScalarProperty Name="Ma" ColumnName="Ma" />
           <ScalarProperty Name="Ten" ColumnName="Ten" />
           <ScalarProperty Name="MoTa" ColumnName="MoTa" />

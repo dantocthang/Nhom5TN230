@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FishMarketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FishMarketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ca_giong">
           <Key>
             <PropertyRef Name="Ma" />
@@ -15,6 +15,7 @@
           <Property Name="SoLuong" Type="int" />
           <Property Name="NgayTuoi" Type="int" />
           <Property Name="loai_ca_giong_Ma" Type="int" />
+          <Property Name="Gia" Type="bigint" />
         </EntityType>
         <EntityType Name="chi_tiet_don_dat">
           <Key>
@@ -253,8 +254,7 @@
             <End Role="nhan_vien" EntitySet="nhan_vien" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FishMarketModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -271,6 +271,7 @@
           <NavigationProperty Name="loai_ca_giong" Relationship="Self.FK__ca_giong__loai_c__267ABA7A" FromRole="ca_giong" ToRole="loai_ca_giong" />
           <NavigationProperty Name="chi_tiet_don_dat" Relationship="Self.FK__chi_tiet___ca_gi__398D8EEE" FromRole="ca_giong" ToRole="chi_tiet_don_dat" />
           <NavigationProperty Name="hinh_anh" Relationship="Self.FK__hinh_anh__ca_gio__29572725" FromRole="ca_giong" ToRole="hinh_anh" />
+          <Property Name="Gia" Type="Int64" />
         </EntityType>
         <EntityType Name="chi_tiet_don_dat">
           <Key>
@@ -533,6 +534,7 @@
           <EntitySetMapping Name="ca_giong">
             <EntityTypeMapping TypeName="FishMarketModel.ca_giong">
               <MappingFragment StoreEntitySet="ca_giong">
+                <ScalarProperty Name="Gia" ColumnName="Gia" />
                 <ScalarProperty Name="Ma" ColumnName="Ma" />
                 <ScalarProperty Name="Ten" ColumnName="Ten" />
                 <ScalarProperty Name="MoTa" ColumnName="MoTa" />

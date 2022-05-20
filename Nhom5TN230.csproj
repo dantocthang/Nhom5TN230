@@ -276,8 +276,8 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Fish\FishType.cshtml" />
     <Content Include="Views\Fish\FishTypes.cshtml" />
-    <Content Include="Views\Fish\ds_Ca_Giong.cshtml" />
-    <Content Include="Views\Fish\tao_Ca_Giong.cshtml" />
+    <Content Include="Views\Fish\ListFish.cshtml" />
+    <Content Include="Views\Fish\CreateFish.cshtml" />
     <Content Include="Views\Fish\EditFish.cshtml" />
     <Content Include="Views\Fish\DeleteFish.cshtml" />
     <Content Include="Views\Fish\EditFishType.cshtml" />

@@ -13,6 +13,7 @@
     <NavigationProperty Name="loai_ca_giong" Relationship="Self.FK__ca_giong__loai_c__267ABA7A" FromRole="ca_giong" ToRole="loai_ca_giong" />
     <NavigationProperty Name="chi_tiet_don_dat" Relationship="Self.FK__chi_tiet___ca_gi__398D8EEE" FromRole="ca_giong" ToRole="chi_tiet_don_dat" />
     <NavigationProperty Name="hinh_anh" Relationship="Self.FK__hinh_anh__ca_gio__29572725" FromRole="ca_giong" ToRole="hinh_anh" />
+    <Property Name="Gia" Type="Int64" />
   </EntityType>
   <EntityType Name="chi_tiet_don_dat">
     <Key>
