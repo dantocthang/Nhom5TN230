@@ -24,6 +24,6 @@ namespace Nhom5TN230
         public string Ten { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ca_giong> ca_giong { get; set; }
+        public virtual ICollection<ca_giong> ca_giong { get; set; } = new List<ca_giong>();
     }
 }

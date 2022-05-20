@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Nhom5TN230.ca_giong>
+
+@{
+    ViewBag.Title = "FishsByType";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+
+
+
+
+<script>
+    $.ajax({
+        type: 'GET',
+        url: '/Home/FishTypes',
+        data: {},
+        success: function (data) {
+            $('#fish-type-list').html(data)
+        }
+    })
+</script>
+
+<div class="products" style="margin-top: 2rem">
+    <div class="grid wide">
+        <div class="products__inner">
+            <div class="products__heading">Cá theo loại</div>
+            <div class="products__sologan">Danh sách @ViewBag.displayName</div>
+            <div id="fish-type-list" style="width:100%; display:flex; justify-content:flex-start">
+
+
+            </div>
+            <ul class="products__list row" data-aos="fade-up" data-aos-duration="1300">
+                @foreach (var item in Model)
+                {
+                    <li class="products__item col l-3 m-4 c-6">
+                        <div class="products__image">
+                            <img src="~/Content/assets/img/products/la_han.jpg" alt="" class="products__img">
+                            <div class="products__sale">-10%</div>
+                        </div>
+                        <span class="products__type">@item.loai_ca_giong.Ten</span>
+                        <div class="products__name">@item.Ten</div>
+                        <div class="product__price">1.490.000 VND</div>
+
+                    </li>
+                }
+
+
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -40,11 +40,11 @@
                     <td data-label="Mô tả" class="table__td">@Html.DisplayFor(modelItem => item.MoTa)</td>
                     <td data-label="Số lượng" class="table__td">@Html.DisplayFor(modelItem => item.SoLuong)</td>
                     <td data-label="Ngày tuổi" class="table__td">@Html.DisplayFor(modelItem => item.NgayTuoi)</td>
-                    <td data-label="Loại cá giống" class="table__td">@Html.DisplayFor(modelItem => item.loai_ca_giong_Ma)</td>
+                    <td data-label="Loại cá giống" class="table__td">@Html.DisplayFor(modelItem => item.loai_ca_giong.Ten)</td>
                     <td data-label="Hành động" class="table__td">
-                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Edit", "EditFish", new { Ma=item.Ma }) |
                         @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                        @Html.ActionLink("Delete", "DeleteFish", new { Ma = item.Ma })
                     </td>
                 </tr>
                 }

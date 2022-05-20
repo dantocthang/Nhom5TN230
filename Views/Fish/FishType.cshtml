@@ -6,6 +6,47 @@
 }
 
 <script>
+
+    $('body').on('click','.ajax-delete-fish-type', function (e) {
+        const Ma = e.target.dataset.id;
+        e.preventDefault();
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                
+                $.ajax({
+                    type: 'POST',
+                    data: {Ma},
+                    url: '/Fish/DeleteFishType',
+                    success: function () {
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                        $.ajax({
+                            type: 'GET',
+                            data: {},
+                            url: '/Fish/FishTypes',
+                            success: function (data) {
+                                $('#fish-type__list').html(data)
+                            }
+                        })
+                    }
+                })
+
+               
+            }
+        })
+    })
+
     $.ajax({
         type: 'GET',
         data: {},
@@ -21,11 +62,11 @@
 @using (Html.BeginForm("FishType"))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal d-flex justify-content-start">
         <h4>lThêm loại cá</h4>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.Ten, htmlAttributes: new { @class = "control-label col-md-2" })

@@ -128,6 +128,23 @@ namespace Nhom5TN230.Controllers
         }
 
 
+        public ActionResult FishsByType(int? id)
+        {
+            if (id == null) id = 8;
+            var name = db.loai_ca_giong.Find(id).Ten;
+            ViewBag.displayName = name;
+            var viewModel = db.ca_giong.Where(s => s.loai_ca_giong_Ma == id);
+            return View(viewModel);
+        }
+
+        [HttpGet]
+        public ActionResult FishTypes()
+        {
+            var data = from s in db.loai_ca_giong select s;
+            return View(data);
+        }
+
+
 
     }
 }
