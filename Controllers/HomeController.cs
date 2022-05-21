@@ -144,6 +144,12 @@ namespace Nhom5TN230.Controllers
             return View(data);
         }
 
+        public ActionResult DetailFish(int id)
+        {
+            ca_giong data = db.ca_giong.SingleOrDefault(s => s.Ma == id);
+            return View(data);
+        }
+
 
 
     }

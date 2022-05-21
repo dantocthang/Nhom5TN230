@@ -1,4 +1,245 @@
-﻿@model Nhom5TN230.ca_giong
+﻿@*@model Nhom5TN230.ca_giong
+
+    @{
+
+        ViewBag.Title = "tao_Ca_Giong";
+
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    }
+
+    <style>
+
+        .div_trong_admin {
+            margin-left: 100px;
+        }
+
+        h2 {
+            font-size: calc(1.325rem + 0.9vw);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+    </style>
+
+    <div class="div_trong_admin">
+
+        <div class="" style="width: 50%">
+
+            <div class="">
+
+                <h2 class="text-primary">Thêm cá giống mới</h2>
+
+                <div class="" style="margin-top: 10px;">
+
+                    @Html.ActionLink("Trở về trang chủ", "../Admin/")
+
+                </div>
+
+            </div>
+
+            <hr class="bg-primary" />
+
+            <div class="" style="width: 100%">
+
+                @using (Html.BeginForm("CreateFish", "Fish", FormMethod.Post, new { @class = "" }))
+
+                {
+
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal" style="width: 680px;">
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="">
+
+                            <div class="row">
+
+                                <div class="form-group col-lg-6 col-md-12 col-sm-12">
+
+                                    <div class="align-start" style="margin-bottom: 10px;">
+
+                                        <b>
+
+                                            Tên cá giống
+
+                                        </b>
+
+                                    </div>
+
+                                    <div class="">
+
+                                        @Html.EditorFor(model => model.Ten, new { htmlAttributes = new { @class = "form-control" } })
+
+                                        @Html.ValidationMessageFor(model => model.Ten, "", new { @class = "text-danger" })
+
+                                        <span class="text-danger">@ViewBag.errorTen</span>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group col-lg-6 col-md-12 col-sm-12">
+
+                                    <div class="align-start" style="margin-bottom: 10px;">
+
+                                        <b>
+
+                                            Loại cá giống
+
+                                        </b>
+
+                                    </div>
+
+                                    <div class="">
+
+                                        @Html.DropDownListFor(
+
+                                        model => model.loai_ca_giong_Ma, new SelectList(ViewBag.data, "Ma", "Ten", "Select"),
+
+                                        new { @class = "form-control" }
+
+                                        )
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="form-group col-lg-6 col-md-12 col-sm-12">
+
+                                    <div class="align-start" style="margin-bottom: 10px;">
+
+                                        <b>
+
+                                            Mô tả cá giống
+
+                                        </b>
+
+                                    </div>
+
+                                    <div class="">
+
+                                        @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control" } })
+
+                                        @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+
+                                        <span class="text-danger">@ViewBag.errorMoTa</span>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group col-lg-6 col-md-12 col-sm-12">
+
+                                    <div class="align-start" style="margin-bottom: 10px;">
+
+                                        <b>
+
+                                           Giá cá giống
+
+                                        </b>
+
+                                    </div>
+
+                                    <div class="">
+
+                                        @Html.EditorFor(model => model.Gia, new { htmlAttributes = new { @class = "form-control" } })
+
+                                        @Html.ValidationMessageFor(model => model.Gia, "", new { @class = "text-danger" })
+
+                                        <span class="text-danger">@ViewBag.errorGia</span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="form-group col-lg-6 col-md-12 col-sm-12">
+
+                                    <div class="align-start" style="margin-bottom: 10px;">
+
+                                        <b>
+
+                                            Số lượng cá giống
+
+                                        </b>
+
+                                    </div>
+
+                                    <div class="">
+
+                                        @Html.EditorFor(model => model.SoLuong, new { htmlAttributes = new { @class = "form-control" } })
+
+                                        @Html.ValidationMessageFor(model => model.SoLuong, "", new { @class = "text-danger" })
+
+                                        <span class="text-danger">@ViewBag.errorSoLuong</span>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group col-lg-6 col-md-12 col-sm-12">
+
+                                    <div class="align-start" style="margin-bottom: 10px;">
+
+                                        <b>
+
+                                            Ngày tuổi
+
+                                        </b>
+
+                                    </div>
+
+                                    <div class="">
+
+                                        @Html.EditorFor(model => model.NgayTuoi, new { htmlAttributes = new { @class = "form-control" } })
+
+                                        @Html.ValidationMessageFor(model => model.NgayTuoi, "", new { @class = "text-danger" })
+
+                                        <span class="text-danger">@ViewBag.errorNgayTuoi</span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="form-group col-lg-12 col-md-12 col-sm-12" style="margin-top: 20px;">
+
+                                    <div class="" style="width: 100%;">
+
+                                        <input type="submit" value="Lưu" class="btn btn-primary" style="width: 100%;" />
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                }
+
+            </div>
+
+        </div>
+
+    </div>*@
+
+@model Nhom5TN230.ca_giong
 
 @{
 
@@ -23,218 +264,143 @@
     }
 </style>
 
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var max_fields = 5;
+        var wrapper = $(".myinput");
+        var add_button = $(".btnAddNew");
+        var x = 0;
+        $(add_button).click(function (e) {
+            e.preventDefault();
+            if (x < max_fields) {
+                x++;
+                $(wrapper).append(
+                    '<div class="row" style="margin-top: 4px;"><input type="file" name="image[' + x + ']" class="col-lg-6 col-md-6 col-sm-6" /><a href="#" class="col-lg-6 col-md-6 col-sm-6 btnRemove" style="margin-top: 5px;">Xóa</a></div>'
+                );
+            }
+        });
+        $(wrapper).on("click", ".btnRemove", function (e) {
+            e.preventDefault(); $(this).parent('div').remove(); x--;
+        })
+    });
+</script>
+
 <div class="div_trong_admin">
-
     <div class="" style="width: 50%">
-
-        <div class="">
-
+        <div class="" style="margin-top: 10px;">
             <h2 class="text-primary">Thêm cá giống mới</h2>
-
             <div class="" style="margin-top: 10px;">
-
                 @Html.ActionLink("Trở về trang chủ", "../Admin/")
-
             </div>
-
         </div>
 
         <hr class="bg-primary" />
 
         <div class="" style="width: 100%">
-
-            @using (Html.BeginForm("CreateFish", "Fish", FormMethod.Post, new { @class = "" }))
-
+            @using (Html.BeginForm("CreateFish", "Fish", FormMethod.Post, new { @enctype = "multipart/form-data" }))
             {
-
                 @Html.AntiForgeryToken()
-
                 <div class="form-horizontal" style="width: 680px;">
-
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
                     <div class="">
 
                         <div class="row">
-
                             <div class="form-group col-lg-6 col-md-12 col-sm-12">
-
                                 <div class="align-start" style="margin-bottom: 10px;">
-
-                                    <b>
-
-                                        Tên cá giống
-
-                                    </b>
-
+                                    <b> Tên cá giống </b>
                                 </div>
-
                                 <div class="">
-
                                     @Html.EditorFor(model => model.Ten, new { htmlAttributes = new { @class = "form-control" } })
-
                                     @Html.ValidationMessageFor(model => model.Ten, "", new { @class = "text-danger" })
-
                                     <span class="text-danger">@ViewBag.errorTen</span>
-
                                 </div>
-
                             </div>
-
                             <div class="form-group col-lg-6 col-md-12 col-sm-12">
-
                                 <div class="align-start" style="margin-bottom: 10px;">
-
-                                    <b>
-
-                                        Loại cá giống
-
-                                    </b>
-
+                                    <b> Loại cá giống </b>
                                 </div>
-
                                 <div class="">
-
                                     @Html.DropDownListFor(
-
-                                    model => model.loai_ca_giong_Ma, new SelectList(ViewBag.data, "Ma", "Ten", "Select"),
-
-                                    new { @class = "form-control" }
-
+                                        model => model.loai_ca_giong_Ma, new SelectList(ViewBag.data, "Ma", "Ten", "Select"),
+                                        new { @class = "form-control" }
                                     )
-
                                 </div>
-
                             </div>
-
                         </div>
 
                         <div class="row">
-
                             <div class="form-group col-lg-6 col-md-12 col-sm-12">
-
                                 <div class="align-start" style="margin-bottom: 10px;">
-
-                                    <b>
-
-                                        Mô tả cá giống
-
-                                    </b>
-
+                                    <b> Mô tả cá giống </b>
                                 </div>
-
                                 <div class="">
-
                                     @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control" } })
-
                                     @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
-
                                     <span class="text-danger">@ViewBag.errorMoTa</span>
-
                                 </div>
-
                             </div>
-
                             <div class="form-group col-lg-6 col-md-12 col-sm-12">
-
                                 <div class="align-start" style="margin-bottom: 10px;">
-
-                                    <b>
-
-                                       Giá cá giống
-
-                                    </b>
-
+                                    <b> Giá cá giống </b>
                                 </div>
-
                                 <div class="">
-
                                     @Html.EditorFor(model => model.Gia, new { htmlAttributes = new { @class = "form-control" } })
-
                                     @Html.ValidationMessageFor(model => model.Gia, "", new { @class = "text-danger" })
-
                                     <span class="text-danger">@ViewBag.errorGia</span>
-
                                 </div>
-
                             </div>
-
                         </div>
 
                         <div class="row">
-
                             <div class="form-group col-lg-6 col-md-12 col-sm-12">
-
                                 <div class="align-start" style="margin-bottom: 10px;">
-
-                                    <b>
-
-                                        Số lượng cá giống
-
-                                    </b>
-
+                                    <b> Số lượng cá giống </b>
                                 </div>
-
                                 <div class="">
-
                                     @Html.EditorFor(model => model.SoLuong, new { htmlAttributes = new { @class = "form-control" } })
-
                                     @Html.ValidationMessageFor(model => model.SoLuong, "", new { @class = "text-danger" })
-
                                     <span class="text-danger">@ViewBag.errorSoLuong</span>
-
                                 </div>
-
                             </div>
-
                             <div class="form-group col-lg-6 col-md-12 col-sm-12">
-
                                 <div class="align-start" style="margin-bottom: 10px;">
-
-                                    <b>
-
-                                        Ngày tuổi
-
-                                    </b>
-
+                                    <b> Ngày tuổi </b>
                                 </div>
-
                                 <div class="">
-
                                     @Html.EditorFor(model => model.NgayTuoi, new { htmlAttributes = new { @class = "form-control" } })
-
                                     @Html.ValidationMessageFor(model => model.NgayTuoi, "", new { @class = "text-danger" })
-
                                     <span class="text-danger">@ViewBag.errorNgayTuoi</span>
-
                                 </div>
-
                             </div>
-
                         </div>
 
                         <div class="row">
-
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12" style="margin-top: 20px;">
-
-                                <div class="" style="width: 100%;">
-
-                                    <input type="submit" value="Lưu" class="btn btn-primary" style="width: 100%;" />
-
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                <div class="align-start" style="margin-bottom: 10px;">
+                                    <b class=""> Hình ảnh cá giống </b>
+                                    <a class="btnAddNew" href="#">Thêm ảnh</a>
                                 </div>
-
+                                <div id="myinput" class="myinput">
+                                    <div class="row">
+                                        <input type="file" name="image[0]" class="col-lg-12 col-md-12 col-sm-12" placeholder="Chọn hình ảnh cá giống" />
+                                        <span class="col-lg-12 col-md-12 col-sm-12 text-danger">@ViewBag.errorHinh</span>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
 
+                        <div class="row">
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12" style="margin-top: 20px;">
+                                <div class="" style="width: 100%;">
+                                    <input type="submit" value="Lưu" class="btn btn-primary" style="width: 100%;" />
+                                </div>
+                            </div>
                         </div>
 
                     </div>
-
                 </div>
-
             }
-
         </div>
-
     </div>
-
 </div>

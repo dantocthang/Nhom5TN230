@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -133,6 +134,108 @@ namespace Nhom5TN230.Controllers.Admin
         }
 
 
+        //public ActionResult CreateFish()
+        //{
+        //    var item = db.loai_ca_giong.ToList();
+        //    ViewBag.data = item;
+        //    return View();
+        //}
+
+        //[HttpPost, ActionName("CreateFish")]
+        //[ValidateAntiForgeryToken]
+        //[ValidateInput(true)]
+        //public ActionResult CreateFish(ca_giong ca_giongform)
+        //{
+        //    var count = 0;
+        //    try
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            // loi chua nhap ten 
+        //            if (ca_giongform.Ten == null)
+        //            {
+        //                ViewBag.errorTen = "Bạn chưa nhập tên cá giống!";
+        //                count++;
+        //            }
+        //            else if (!Regex.IsMatch(ca_giongform.Ten, "^[aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆ fFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTu UùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ 0-9 ]{1,150}$"))
+        //            {
+        //                ViewBag.errorTen = "Tên cá giống không được chứa ký tự đặt biệt!";
+        //                count++;
+        //            }
+        //            // loi chua nhap mo ta
+        //            if (ca_giongform.MoTa == null)
+        //            {
+        //                ViewBag.errorMoTa = "Bạn chưa nhập mô tả cá giống!";
+        //                count++;
+        //            }
+        //            else if (!Regex.IsMatch(ca_giongform.Ten, "^[aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆ fFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTu UùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ 0-9 ]{1,150}$"))
+        //            {
+        //                ViewBag.errorTen = "Tên cá giống không được chứa ký tự đặt biệt!";
+        //                count++;
+        //            }
+        //            // loi chua nhap so luong
+        //            if (ca_giongform.SoLuong == null)
+        //            {
+        //                ViewBag.errorSoLuong = "Bạn chưa nhập số lượng cá giống!";
+        //                count++;
+        //            }
+        //            else if (ca_giongform.SoLuong < 0)
+        //            {
+        //                ViewBag.errorSoLuong = "Số lượng cá giống không được âm!";
+        //                count++;
+        //            }
+        //            if (ca_giongform.NgayTuoi == null)
+        //            {
+        //                ViewBag.errorNgayTuoi = "Bạn chưa nhập ngày tuổi của cá giống!";
+        //                count++;
+        //            }
+        //            else if (ca_giongform.NgayTuoi < 0)
+        //            {
+        //                ViewBag.errorNgayTuoi = "Tuổi cá giống không được âm!";
+        //                count++;
+        //            }
+
+        //            if (ca_giongform.Gia == null)
+        //            {
+        //                ViewBag.errorGia = "Bạn chưa nhập giá cá giống!";
+        //                count++;
+        //            }
+        //            else if (ca_giongform.Gia < 0)
+        //            {
+        //                ViewBag.errorGia = "Giá cá giống không được âm!";
+        //                count++;
+        //            }
+        //            // hien loi
+        //            if (count != 0)
+        //            {
+        //                var item = db.loai_ca_giong.ToList();
+        //                ViewBag.data = item;
+        //                return View();
+        //            }
+
+
+        //            //Them Ca Giong Moi
+        //            ca_giong ca_giong = new ca_giong();
+        //            //ca_giong.Ma = db.ca_giong.Max(p => p.Ma) + 1;
+        //            ca_giong.Ten = ca_giongform.Ten;
+        //            ca_giong.MoTa = ca_giongform.MoTa;
+        //            ca_giong.SoLuong = ca_giongform.SoLuong;
+        //            ca_giong.NgayTuoi = ca_giongform.NgayTuoi;
+        //            ca_giong.loai_ca_giong_Ma = ca_giongform.loai_ca_giong_Ma;
+        //            ca_giong.Gia = ca_giongform.Gia;
+        //            db.ca_giong.Add(ca_giong);
+        //            db.SaveChanges();
+        //        }
+        //    }
+        //    catch (RetryLimitExceededException)
+        //    {
+        //        ModelState.AddModelError("", "Lỗi khi thêm cá giống mới");
+        //    }
+        //    //Cập nhật lại danh sách hiển thị
+        //    var list = from s in db.ca_giong select s;
+        //    return RedirectToAction("ListFish");
+        //}
+
         public ActionResult CreateFish()
         {
             var item = db.loai_ca_giong.ToList();
@@ -143,7 +246,7 @@ namespace Nhom5TN230.Controllers.Admin
         [HttpPost, ActionName("CreateFish")]
         [ValidateAntiForgeryToken]
         [ValidateInput(true)]
-        public ActionResult CreateFish(ca_giong ca_giongform)
+        public ActionResult CreateFish(ca_giong ca_giongform, List<HttpPostedFileBase> image)
         {
             var count = 0;
             try
@@ -193,7 +296,6 @@ namespace Nhom5TN230.Controllers.Admin
                         ViewBag.errorNgayTuoi = "Tuổi cá giống không được âm!";
                         count++;
                     }
-
                     if (ca_giongform.Gia == null)
                     {
                         ViewBag.errorGia = "Bạn chưa nhập giá cá giống!";
@@ -204,6 +306,31 @@ namespace Nhom5TN230.Controllers.Admin
                         ViewBag.errorGia = "Giá cá giống không được âm!";
                         count++;
                     }
+
+                    // nhieu hinh anh
+                    foreach (var item in image)
+                    {
+                        if (item != null)
+                        {
+                            var fileName = Path.GetFileName(item.FileName);
+                            var path = Path.Combine(HttpContext.Server.MapPath("~/Content/assets/img/products/"), db.ca_giong.Max(p => p.Ma) + 1 + fileName);
+                            if (System.IO.File.Exists(path))
+                            {
+                                ViewBag.errorHinh = "Hình ảnh đã tồn tại!";
+                                count++;
+                            }
+                            else if (count == 0)
+                            {
+                                item.SaveAs(path);
+                            }
+                        }
+                        else
+                        {
+                            ViewBag.errorHinh = "Bạn chưa thêm hình ảnh cá giống!";
+                            count++;
+                        }
+                    }
+
                     // hien loi
                     if (count != 0)
                     {
@@ -212,10 +339,8 @@ namespace Nhom5TN230.Controllers.Admin
                         return View();
                     }
 
-
-                    //Them Ca Giong Moi
+                    //Them ca giong moi
                     ca_giong ca_giong = new ca_giong();
-                    //ca_giong.Ma = db.ca_giong.Max(p => p.Ma) + 1;
                     ca_giong.Ten = ca_giongform.Ten;
                     ca_giong.MoTa = ca_giongform.MoTa;
                     ca_giong.SoLuong = ca_giongform.SoLuong;
@@ -224,6 +349,16 @@ namespace Nhom5TN230.Controllers.Admin
                     ca_giong.Gia = ca_giongform.Gia;
                     db.ca_giong.Add(ca_giong);
                     db.SaveChanges();
+
+                    // luu nhieu anh vao database
+                    foreach (var item in image)
+                    {
+                        hinh_anh hinh = new hinh_anh();
+                        hinh.Ten = db.ca_giong.Max(p => p.Ma) + item.FileName;
+                        hinh.ca_giong_Ma = db.ca_giong.Max(p => p.Ma);
+                        db.hinh_anh.Add(hinh);
+                        db.SaveChanges();
+                    }
                 }
             }
             catch (RetryLimitExceededException)
@@ -234,6 +369,7 @@ namespace Nhom5TN230.Controllers.Admin
             var list = from s in db.ca_giong select s;
             return RedirectToAction("ListFish");
         }
+
 
 
         public ActionResult EditFish(int? id)
@@ -326,17 +462,7 @@ namespace Nhom5TN230.Controllers.Admin
             return RedirectToAction("ListFish");
         }
 
-        //public ActionResult DeleteFish(int? id)
-        //{
-        //    ca_giong ca = db.ca_giong.SingleOrDefault(n => n.Ma == id);
-
-        //    if (ca == null)
-        //    {
-        //        Response.StatusCode = 404;
-        //        return null;
-        //    }
-        //    return View(ca);
-        //}
+       
 
         [HttpPost]
         public ActionResult DeleteFish(int id)
@@ -346,6 +472,9 @@ namespace Nhom5TN230.Controllers.Admin
             db.SaveChanges();
             return RedirectToAction("ListFish");
         }
+
+        
+
 
     }
 }

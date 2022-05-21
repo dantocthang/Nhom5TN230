@@ -1,0 +1,119 @@
+﻿@model Nhom5TN230.ca_giong
+
+@{
+    ViewBag.Title = "DetailFish";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+<script>
+    $(document).ready(function () {
+        $('.images-list').slick({
+            dots: true,
+            infinite: true,
+            speed: 600,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            nextArrow: '<button class="slider__button next"><i class="fa-solid fa-chevron-right"></i></button>',
+            prevArrow: '<button class="slider__button previous"><i class="fa-solid fa-chevron-left"></i></button>'
+        });})
+    
+</script>
+
+
+<div class="fish">
+    <div class="grid wide">
+        <p>
+            <a id="fish-delete-btn" href="/Fish/ListFish"><i class="fa-solid fa-angle-left"></i> Trở về danh sách</a>
+        </p>
+        <div class="fish__inner">
+            <div class="col l-9 fish__inner row">
+                <ul class="col l-5 fish__image images-list">
+                    @foreach (var item in Model.hinh_anh)
+                    {
+                        <li><img class="fish__img" src="~/Content/assets/img/products/@item.Ten" alt="@item.Ten" ></li>
+                    }
+                </ul>
+                <div class="col l-7">
+                    <div class="fish__path">
+                        <a href="/" class="fish__link">
+                            Trang chủ / Sản phẩm / @Html.DisplayFor(model => model.loai_ca_giong.Ten)
+                        </a>
+                    </div>
+                    <div class="fish__name">@Html.DisplayFor(model => model.Ten)</div>
+                    <div class="fish__detail">
+                        <div class="fish__detail-heading">Thông tin mô tả</div>
+                        <div class="fish__detail-name">
+                            <span>Tên gọi: </span>
+                            @Html.DisplayFor(model => model.MoTa)
+                        </div>
+                        <div class="fish__detail-type">
+                            <span>Loại cá: </span>
+                            @Html.DisplayFor(model => model.loai_ca_giong.Ten)
+                        </div>
+                    </div>
+                    <div class="fish__detail-size">
+                        <span>Số lượng: </span>
+                        <input type="number" id="quantity" name="quantity" min="1" step="1" value="1">
+                    </div>
+                    <div class="fish__detail-price">
+                        <span>Giá: </span>
+                        @Html.DisplayFor(model => model.Gia) VNĐ / con
+                    </div>
+                    <button class="fish__buy">
+                        Mua
+                    </button>
+                    <div class="fish__chat">
+                        <div class="fish__chat-item">
+                            <i class="fa-brands fa-facebook-f"></i>
+                            <span>Chat Facebook</span>
+                        </div>
+                        <div class="fish__chat-item">
+                            <i class="fa-solid fa-message"></i>
+                            <span>Chat Zalo</span>
+                        </div>
+                        <div class="fish__chat-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>012345678</span>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col l-3">
+                <ul class="fish__services">
+                    <li class="fish__service">
+                        <img src="~/Content/assets/img/service1.png" alt="" class="fish__service-icon">
+                        <div class="fish__service-main">
+                            <div class="fish__service-heading">GIÁ SỈ & LẺ TỐT NHẤT</div>
+                            <div class="fish__service-text">Mua càng nhiều càng giảm</div>
+                        </div>
+                    </li>
+                    <li class="fish__service">
+                        <img src="~/Content/assets/img/service2.png" alt="" class="fish__service-icon">
+                        <div class="fish__service-main">
+                            <div class="fish__service-heading">VẬN CHUYỄN TẬN NƠI</div>
+                            <div class="fish__service-text">Bất kể số lượng cá mua</div>
+                        </div>
+                    </li>
+                    <li class="fish__service">
+                        <img src="~/Content/assets/img/service3.png" alt="" class="fish__service-icon">
+                        <div class="fish__service-main">
+                            <div class="fish__service-heading">CON GIỐNG CHẤT LƯỢNG</div>
+                            <div class="fish__service-text">Khỏe, đều, không xây sát</div>
+                        </div>
+                    </li>
+                    <li class="fish__service">
+                        <img src="~/Content/assets/img/service4.png" alt="" class="fish__service-icon">
+                        <div class="fish__service-main">
+                            <div class="fish__service-heading">BAO HAO HỤT CÁ</div>
+                            <div class="fish__service-text">Đảm bảo mọi rủi ro</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
