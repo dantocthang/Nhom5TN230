@@ -28,6 +28,14 @@
                 data: { id, Quantity },
                 success: function (data) {
                     $("#Cart_Amount").html(data.ItemAmount);
+                    if (data.ThongBao != "") {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Lỗi',
+                            text: ` ${data.ThongBao} `,
+
+                        })
+                    }
                     $.ajax({
                         type: 'GET',
                         url: '/Cart/CartQuick',
@@ -72,12 +80,16 @@
                     <div class="fish__detail">
                         <div class="fish__detail-heading">Thông tin mô tả</div>
                         <div class="fish__detail-name">
-                            <span>Tên gọi: </span>
+                            <span>Mô tả: </span>
                             @Html.DisplayFor(model => model.MoTa)
                         </div>
                         <div class="fish__detail-type">
                             <span>Loại cá: </span>
                             @Html.DisplayFor(model => model.loai_ca_giong.Ten)
+                        </div>
+                        <div class="fish__detail-type">
+                            <span>Số lượng tồn: </span>
+                            @Html.DisplayFor(model => model.SoLuong)
                         </div>
                     </div>
                     <div class="fish__detail-size">

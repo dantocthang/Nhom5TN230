@@ -7,7 +7,7 @@ using Nhom5TN230.Models;
 
 namespace Nhom5TN230.Controllers
 {
-    
+
     public class CartController : Controller
     {
         FishMarketEntities db = new FishMarketEntities();
@@ -20,12 +20,26 @@ namespace Nhom5TN230.Controllers
         public JsonResult AddToCart(int id, int Quantity)
         {
             List<CartItem> listCartItem;
+            var productOrder = db.ca_giong.Find(id);
+            string ThongBao = "";
             if (Session["ShoppingCart"] == null)
             {
+
+
                 //Create New Shopping Cart Session 
+
                 listCartItem = new List<CartItem>();
-                listCartItem.Add(new CartItem { Quantity = Quantity, productOrder = db.ca_giong.Find(id) });
-                Session["ShoppingCart"] = listCartItem;
+                if (Quantity <= productOrder.SoLuong)
+                {
+                    listCartItem.Add(new CartItem { Quantity = Quantity, productOrder = productOrder });
+                    Session["ShoppingCart"] = listCartItem;
+                }
+                else
+                {
+                    ThongBao = "Bạn đã đặt quá số lượng hiện có của cá này!";
+                }
+
+
             }
             else
             {
@@ -35,24 +49,37 @@ namespace Nhom5TN230.Controllers
                 {
                     if (item.productOrder.Ma == id)
                     {
-                        item.Quantity+=Quantity; flag = true;
+                        if (Quantity + item.Quantity <= item.productOrder.SoLuong)
+                        {
+                            item.Quantity += Quantity; flag = true;
+                        }
+                        else ThongBao = "Bạn đã đặt quá số lượng hiện có của cá này!";
                         break;
+
                     }
                 }
 
-                if (!flag)
-                    listCartItem.Add(new CartItem { Quantity = Quantity, productOrder = db.ca_giong.Find(id) });
+                if (!flag && ThongBao == "")
+                    if (Quantity <= productOrder.SoLuong)
+                    {
+                        listCartItem.Add(new CartItem { Quantity = Quantity, productOrder = productOrder });
 
+
+                    }
+                    else ThongBao = "Bạn đã đặt quá số lượng hiện có của cá này!";
                 Session["ShoppingCart"] = listCartItem;
             }
-            
+
             int cartcount = 0;
             List<CartItem> ls = (List<CartItem>)Session["ShoppingCart"];
-            foreach (CartItem item in ls)
+            if (ls != null)
             {
-                cartcount += 1;
+                foreach (CartItem item in ls)
+                {
+                    cartcount += 1;
+                }
             }
-            return Json(new { ItemAmount = cartcount }, JsonRequestBehavior.AllowGet);
+            return Json(new { ItemAmount = cartcount, ThongBao = ThongBao }, JsonRequestBehavior.AllowGet);
 
         }
 
@@ -75,6 +102,46 @@ namespace Nhom5TN230.Controllers
                 return View(listCartItem);
             }
             return View();
+        }
+
+        public JsonResult CartAmount()
+        {
+            int cartcount = 0;
+            List<CartItem> ls = (List<CartItem>)Session["ShoppingCart"];
+            if (ls != null)
+            {
+                foreach (CartItem item in ls)
+                {
+                    cartcount += 1;
+                }
+            }
+            return Json(new { Count = cartcount }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult ClearCart()
+        {
+            Session.Remove("ShoppingCart");
+            return Json("", JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult DeleteFish(int id)
+        {
+            List<CartItem> ls = (List<CartItem>)Session["ShoppingCart"];
+            if (ls != null)
+            {
+                foreach (CartItem item in ls)
+                {
+                    if (item.productOrder.Ma == id)
+                    {
+                        ls.Remove(item);
+                        Session["ShoppingCart"] = ls;
+                        break;
+
+                    }
+                }
+            }
+
+            return Json("", JsonRequestBehavior.AllowGet);
         }
     }
 }

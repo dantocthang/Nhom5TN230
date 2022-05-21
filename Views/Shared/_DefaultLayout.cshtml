@@ -12,6 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="~/Content/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="~/Content/bootstrap.min.css">
     <link rel="stylesheet" href="~/Content/assets/css/grid.css">
@@ -30,7 +31,27 @@
         @RenderPage("_Footer.cshtml")
     </div>
 
-
+    <script>
+        $.ajax({
+            type: 'GET',
+            url: '/Cart/CartAmount',
+            data: {},
+            success: function (data) {
+                const numDiv = document.querySelector('#Cart_Amount')
+                numDiv.innerText = data.Count;
+                console.log(data.Count)
+            }
+        })
+        $.ajax({
+            type: 'GET',
+            url: '/Cart/CartQuick',
+            data: {},
+            success: function (data) {
+                const listDiv = document.querySelector('#header-cart-list')
+                listDiv.innerHTML = data
+            }
+        })
+    </script>
     
     <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>

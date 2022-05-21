@@ -65,7 +65,7 @@
                     <a href="/" class="header__tools-item">
                         <i class="fa-solid fa-magnifying-glass header__tools-icon"></i>
                     </a>
-                    <div class="header__tools-item">
+                    <a href="/Cart/CartDetail" class="header__tools-item" style="display: flex;">
                         <div id="Cart_Amount"></div>
                         <i class="fa-solid fa-cart-shopping header__tools-icon"></i>
                         <div class="header__cart-expand">
@@ -73,7 +73,7 @@
                                 
                             </ul>
                         </div>
-                    </div>
+                    </a>
                     @{
                         if (Session["userSession"] != null)
                         {

@@ -6,6 +6,8 @@
 }
 
 
+
+
 <div class="cart">
     <div class="grid wide">
         <div class="row d-flex" style="align-items: center; gap: 1rem;">
@@ -20,7 +22,7 @@
         <div class="row" style="align-items: center; margin-top: 1rem; margin-bottom: 1.5rem">
             <div class="col l-8 m-6 c-12 d-flex justify-content-between">
                 <div class="cart__heading">Giỏ hàng</div>
-                <a href="" class="cart__remove">Xóa tất cả</a>
+                <a href="/" id="cart-remove-all" class="cart__remove">Xóa tất cả</a>
             </div>
             <div class="col l-4 m-6 c-12">
                 <button class="cart__download">Tải báo giá</button>
@@ -36,38 +38,39 @@
                 </div>
 
                 <div class="cart__grid-body">
-                    @{ 
-                        long? sumPrice = 0;
-                    }
-                    @foreach (var item in Model)
+
+                    @if (Model != null)
                     {
-                        var total = item.Quantity * item.productOrder.Gia;
-                        sumPrice = sumPrice+total;
-                        <a href="/" class="cart__product-image">
-                            @if (item.productOrder.hinh_anh == null)
-                            {
-                                <img src="/Content/assets/img/products/default.jpg" alt="" class=cart__product-img>
-                            }
-                            else
-                            {
-                                <img src="/Content/assets/img/products/@item.productOrder.hinh_anh.FirstOrDefault().Ten" alt="" class=cart__product-img>
-                            }
-                        </a>
-                        <div class="cart__product-name">
-                            <span>
-                                @item.productOrder.Ten
-                            </span>
-                        </div>
-                        <div class="cart__product-price cart_product-number">
-                            @item.productOrder.Gia đ
-                        </div>
-                        <div class="cart__product-quantity">
-                            <input type="number" name="quantity" id="quantity" value="@item.Quantity">
-                            <a href="/">Xóa</a>
-                        </div>
-                        <div class="cart__product-total cart_product-number">
-                            @total đ
-                        </div>
+                        foreach (var item in Model)
+                        {
+                            var total = item.Quantity * item.productOrder.Gia;
+
+                            <a href="/" class="cart__product-image">
+                                @if (item.productOrder.hinh_anh == null)
+                                {
+                                    <img src="/Content/assets/img/products/default.jpg" alt="" class=cart__product-img>
+                                }
+                                else
+                                {
+                                    <img src="/Content/assets/img/products/@item.productOrder.hinh_anh.FirstOrDefault().Ten" alt="" class=cart__product-img>
+                                }
+                            </a>
+                            <div class="cart__product-name">
+                                <span>
+                                    @item.productOrder.Ten
+                                </span>
+                            </div>
+                            <div data-gia="@item.productOrder.Gia" class="cart__product-price cart_product-number">
+                                @item.productOrder.Gia đ
+                            </div>
+                            <div class="cart__product-quantity">
+                                <input type="number" name="quantity" min="0" class="inputChange" data-id="@item.productOrder.Ma" data-value="@item.Quantity" value="@item.Quantity">
+                                <a href="/" data-id="@item.productOrder.Ma" class="delete-fish-cart">Xóa</a>
+                            </div>
+                            <div class="cart__product-total cart_product-number">
+                                @total đ
+                            </div>
+                        }
                     }
 
                 </div>
@@ -85,7 +88,7 @@
                         <div class="cart__checkout-label">
                             Thành tiền:
                         </div>
-                        <div class="cart__checkout-price">@sumPrice đ</div>
+                        <div class="cart__checkout-price"> đ</div>
 
                     </div>
                     <div class="cart__checkout-vat">(Đã bao gồm thuế VAT)</div>
@@ -97,5 +100,96 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    TongTien()
+    const inputs = document.querySelectorAll('.inputChange');
+    const deletes = document.querySelectorAll('.delete-fish-cart')
+    const removeAll = document.querySelector('#cart-remove-all')
+    inputs.forEach(input => {
+        input.addEventListener('change', function (e) {
+            const id = e.target.dataset.id
+            const newQuantity = e.target.value
+            const currentQuantity = e.target.dataset.value
+            e.target.dataset.value = newQuantity
+            const Quantity = parseInt(newQuantity) - parseInt(currentQuantity)
+            @*console.log(newQuantity, currentQuantity, Quantity)*@
+            $.ajax({
+                type: 'GET',
+                url: '/Cart/AddToCart',
+                data: { id, Quantity },
+                success: function (data) {
+                    TongTien()
+                    $("#Cart_Amount").html(data.ItemAmount);
+                    if (data.ThongBao != "") {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Lỗi',
+                            text: ` ${data.ThongBao} `,
+
+                        })
+                    }
+                    $.ajax({
+                        type: 'GET',
+                        url: '/Cart/CartQuick',
+                        data: {},
+                        success: function (data) {
+                            $('#header-cart-list').html(data)
+
+                        }
+                    })
+                }
+            })
+        })
+    })
+
+    deletes.forEach(item => {
+        item.addEventListener('click', function (e) {
+            e.preventDefault()
+            const id = e.target.dataset.id
+            $.ajax({
+                type: 'GET',
+                url: '/Cart/DeleteFish',
+                data: { id },
+                success: function () {
+                    window.location.href='/Cart/CartDetail'
+                }
+            })
+        })
+    })
+
+
+    removeAll.addEventListener('click', function (e) {
+        e.preventDefault()
+        $.ajax({
+            type: 'GET',
+            url: '/Cart/ClearCart',
+            data: {},
+            success: function (data) {
+                window.location.href = "/Cart/CartDetail"
+            }
+        })
+    })
+
+
+    function TongTien() {
+        const totals = document.querySelectorAll('.cart__product-total')
+        const prices = document.querySelectorAll('.cart__product-price')
+        const quantities = document.querySelectorAll('.inputChange')
+        const checkoutPrice = document.querySelector('.cart__checkout-price')
+        var sum = 0;
+        for (let i = 0; i < prices.length; i++) {
+            var total = 0;
+            total = parseInt(prices[i].dataset.gia) * parseInt(quantities[i].dataset.value);
+            totals[i].innerText = `${total} đ`
+            sum += total;
+        }
+        checkoutPrice.innerText=`${sum} đ`
+    }
+
+
+
+</script>
 
 

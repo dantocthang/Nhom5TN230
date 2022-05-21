@@ -1426,7 +1426,7 @@ table {
 
     .cart__product-quantity > input {
         height: 36px;
-        width: 80px;
+        width: 100px;
         border: 1px solid var(--primary);
         outline: none;
         background-color: #f8f8fc;
@@ -1450,7 +1450,7 @@ table {
 
 .cart__grid-header {
     display: grid;
-    grid-template-columns: 6fr 2fr 2fr 2fr;
+    grid-template-columns: 5fr 2fr 2fr 2fr;
     grid-template-rows: 60px;
     border-bottom: 1px solid #eee;
     line-height: 60px;
