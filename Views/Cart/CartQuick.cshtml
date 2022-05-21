@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Nhom5TN230.Models.CartItem>
+
+@{
+    Layout = null;
+}
+
+
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        var total = item.Quantity * item.productOrder.Gia;
+        <li class="header__cart-item">
+            <a href="/Home/DetailFish/@item.productOrder.Ma" class="header__cart-link">
+                @if (item.productOrder.hinh_anh == null)
+                {
+                    <img src="/Content/assets/img/products/default.jpg" alt="" class="header__cart-img">
+                }
+                else
+                {
+                    <img src="/Content/assets/img/products/@item.productOrder.hinh_anh.FirstOrDefault().Ten" alt="" class="header__cart-img">
+                }
+                <div class="header__cart-name">
+                    @item.productOrder.Ten
+                </div>
+                <div class="header__cart-quantity">x @item.Quantity</div>
+
+                <div class="header__cart-price">@total đ</div>
+            </a>
+        </li>
+
+    }
+}
+
+

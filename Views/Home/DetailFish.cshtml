@@ -15,8 +15,37 @@
             slidesToScroll: 1,
             nextArrow: '<button class="slider__button next"><i class="fa-solid fa-chevron-right"></i></button>',
             prevArrow: '<button class="slider__button previous"><i class="fa-solid fa-chevron-left"></i></button>'
-        });})
-    
+        });
+
+
+        $('#buy-btn').on('click', function () {
+            const id = event.target.dataset.id
+            const Quantity = document.querySelector('#quantity').value
+            console.log(id, Quantity)
+            $.ajax({
+                type: 'GET',
+                url: '/Cart/AddToCart',
+                data: { id, Quantity },
+                success: function (data) {
+                    $("#Cart_Amount").html(data.ItemAmount);
+                    $.ajax({
+                        type: 'GET',
+                        url: '/Cart/CartQuick',
+                        data: {},
+                        success: function (data) {
+                            $('#header-cart-list').html(data)
+                        }
+                    })
+                }
+
+            })
+        })
+
+
+
+
+    })
+
 </script>
 
 
@@ -30,7 +59,7 @@
                 <ul class="col l-5 fish__image images-list">
                     @foreach (var item in Model.hinh_anh)
                     {
-                        <li><img class="fish__img" src="~/Content/assets/img/products/@item.Ten" alt="@item.Ten" ></li>
+                        <li><img class="fish__img" src="~/Content/assets/img/products/@item.Ten" alt="@item.Ten"></li>
                     }
                 </ul>
                 <div class="col l-7">
@@ -59,7 +88,7 @@
                         <span>Giá: </span>
                         @Html.DisplayFor(model => model.Gia) VNĐ / con
                     </div>
-                    <button class="fish__buy">
+                    <button data-id="@Model.Ma" id="buy-btn" class="fish__buy">
                         Mua
                     </button>
                     <div class="fish__chat">

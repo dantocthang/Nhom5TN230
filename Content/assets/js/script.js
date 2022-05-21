@@ -38,6 +38,16 @@ $(document).ready(function () {
         ]
     });
 
+    //$.ajax({
+    //    type: 'GET',
+    //    url: '/Cart/CartQuick',
+    //    data: {},
+    //    success: function (data) {
+    //        console.log(data)
+    //        $('#header-cart-list').html(data)
+    //    }
+    //})
+
     
 });
 

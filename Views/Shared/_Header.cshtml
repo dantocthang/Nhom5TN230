@@ -1,4 +1,24 @@
 ﻿
+<script>
+    $(document).ready(function () {
+        
+
+        @*$.ajax({
+            type: 'GET',
+            url: '/Cart/CartQuick',
+            data: {},
+            success: function (data) {
+                console.log(data)
+                $('#header-cart-list').html(data)
+            }
+        })*@
+
+
+    });
+
+
+</script>
+
 <header class="header">
     <div class="header__top">
         <div class="grid wide">
@@ -46,29 +66,11 @@
                         <i class="fa-solid fa-magnifying-glass header__tools-icon"></i>
                     </a>
                     <div class="header__tools-item">
+                        <div id="Cart_Amount"></div>
                         <i class="fa-solid fa-cart-shopping header__tools-icon"></i>
                         <div class="header__cart-expand">
-                            <ul class="header__cart-list">
-                                <li class="header__cart-item">
-                                    <a href="/" class="header__cart-link">
-                                        <img src="~/Content/assets/img/logo.png" alt="" class="header__cart-img">
-                                        <div class="header__cart-name">
-                                            Ca dat nhat the gioi
-                                        </div>
-                                        <div class="header__cart-quantity">x3</div>
-                                        <div class="header__cart-price">300 USD</div>
-                                    </a>
-                                </li>
-                                <li class="header__cart-item">
-                                    <a href="/" class="header__cart-link">
-                                        <img src="~/Content/assets/img/logo.png" alt="" class="header__cart-img">
-                                        <div class="header__cart-name">
-                                            Ca dat nhat the gioi
-                                        </div>
-                                        <div class="header__cart-quantity">x3</div>
-                                        <div class="header__cart-price">300 USD</div>
-                                    </a>
-                                </li>
+                            <ul id="header-cart-list" class="header__cart-list">
+                                
                             </ul>
                         </div>
                     </div>

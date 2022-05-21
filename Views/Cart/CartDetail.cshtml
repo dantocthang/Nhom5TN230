@@ -1,0 +1,101 @@
+﻿@model IEnumerable<Nhom5TN230.Models.CartItem>
+
+@{
+    ViewBag.Title = "CartDetail";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+
+<div class="cart">
+    <div class="grid wide">
+        <div class="row d-flex" style="align-items: center; gap: 1rem;">
+            <div class="cart__home">
+                <i class="fa-solid fa-house cart__home-icon"></i>
+            </div>
+            <i class="fa-solid fa-chevron-right"></i>
+            <div class="cart__cart">
+                Giỏ hàng
+            </div>
+        </div>
+        <div class="row" style="align-items: center; margin-top: 1rem; margin-bottom: 1.5rem">
+            <div class="col l-8 m-6 c-12 d-flex justify-content-between">
+                <div class="cart__heading">Giỏ hàng</div>
+                <a href="" class="cart__remove">Xóa tất cả</a>
+            </div>
+            <div class="col l-4 m-6 c-12">
+                <button class="cart__download">Tải báo giá</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col l-8 m-12 c-12">
+                <div class="cart__grid-header">
+                    <div>Sản phẩm</div>
+                    <div>Đơn giá</div>
+                    <div>Số lượng</div>
+                    <div>Thành tiền</div>
+                </div>
+
+                <div class="cart__grid-body">
+                    @{ 
+                        long? sumPrice = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        var total = item.Quantity * item.productOrder.Gia;
+                        sumPrice = sumPrice+total;
+                        <a href="/" class="cart__product-image">
+                            @if (item.productOrder.hinh_anh == null)
+                            {
+                                <img src="/Content/assets/img/products/default.jpg" alt="" class=cart__product-img>
+                            }
+                            else
+                            {
+                                <img src="/Content/assets/img/products/@item.productOrder.hinh_anh.FirstOrDefault().Ten" alt="" class=cart__product-img>
+                            }
+                        </a>
+                        <div class="cart__product-name">
+                            <span>
+                                @item.productOrder.Ten
+                            </span>
+                        </div>
+                        <div class="cart__product-price cart_product-number">
+                            @item.productOrder.Gia đ
+                        </div>
+                        <div class="cart__product-quantity">
+                            <input type="number" name="quantity" id="quantity" value="@item.Quantity">
+                            <a href="/">Xóa</a>
+                        </div>
+                        <div class="cart__product-total cart_product-number">
+                            @total đ
+                        </div>
+                    }
+
+                </div>
+
+
+
+
+            </div>
+            <div class="col l-4 m-12 c-12">
+                <div class="cart_checkout">
+                    <div class="cart__checkout-heading">
+                        Thanh toán
+                    </div>
+                    <div class="cart__checkout-row">
+                        <div class="cart__checkout-label">
+                            Thành tiền:
+                        </div>
+                        <div class="cart__checkout-price">@sumPrice đ</div>
+
+                    </div>
+                    <div class="cart__checkout-vat">(Đã bao gồm thuế VAT)</div>
+                    <a href="/" class="cart__checkout-btn">
+                        Thanh toán
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
