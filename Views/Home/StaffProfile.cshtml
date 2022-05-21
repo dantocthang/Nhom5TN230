@@ -1,0 +1,28 @@
+﻿@model Nhom5TN230.nhan_vien
+
+@{
+    ViewBag.Title = "StaffProfile";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+<h2 class="text-center profile-heading">Hồ sơ nhân viên</h2>
+<div class="row profile">
+    <div class="profile-img col-5">
+        <img src="~/Content/assets/img/default-user-image.png" alt="User image">
+
+    </div>
+    <div class="profile-content col-7">
+        <div class="mb-3">
+            <h2 class="profile-name"><span class="profile-label">Họ tên: </span>@Html.DisplayFor(model => model.Ten)</h2>
+            <h4 class="profile-info"><span class="profile-label">Mã nhân viên: </span>@Html.DisplayFor(model => model.Ma)</h4>
+            <h4 class="profile-info"><span class="profile-label">Số điện thoại: </span>@Html.DisplayFor(model => model.SDT)</h4>
+            <h4 class="profile-info"><span class="profile-label">Địa chỉ: </span>@Html.DisplayFor(model => model.DiaChi)</h4>
+            <h4 class="profile-info"><span class="profile-label">Phân quyền: </span>@Html.DisplayFor(model => model.quyen.Ten)</h4>
+        </div>
+
+        <div class="button">
+            <a class="btn btn-primary w-50" href="/Home/EditStaffProfile/@Model.Ma">Chỉnh sửa thông tin nhân viên </a>
+        </div>
+
+    </div>
+</div>

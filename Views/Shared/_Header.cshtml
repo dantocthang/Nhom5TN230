@@ -1,7 +1,7 @@
 ﻿
 <script>
     $(document).ready(function () {
-        
+
 
         @*$.ajax({
             type: 'GET',
@@ -70,26 +70,36 @@
                         <i class="fa-solid fa-cart-shopping header__tools-icon"></i>
                         <div class="header__cart-expand">
                             <ul id="header-cart-list" class="header__cart-list">
-                                
                             </ul>
                         </div>
                     </a>
                     @{
-                        if (Session["userSession"] != null)
+                        @*if (Session["userSession"] != null)
+                            {
+                                <div class="header__tools-item">
+                                    <i class="fa-solid fa-user-large header__tools-icon"></i>
+                                    <div class="header__user-expand">
+                                        <p>Hello @Session["userSession"].ToString()</p>
+                                        <a href="/Home/Logout">Đăng xuất</a>
+                                    </div>
+                                </div>
+                            }*@
+                        if (Session["username"] != null)
                         {
                             <div class="header__tools-item">
                                 <i class="fa-solid fa-user-large header__tools-icon"></i>
                                 <div class="header__user-expand">
-                                    <p>Hello @Session["userSession"].ToString()</p>
+                                    @Html.ActionLink("Hello " + Session["name"].ToString(), "Profile", new { username = Session["username"].ToString() })
                                     <a href="/Home/Logout">Đăng xuất</a>
                                 </div>
                             </div>
                         }
+
                         else
                         {
                             <a href="/Home/Login" class="header__tools-item">
                                 <i class="fa-solid fa-user-large header__tools-icon"></i>
-                                
+
                             </a>
                         }
                     }

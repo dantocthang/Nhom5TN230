@@ -1,0 +1,55 @@
+﻿@model Nhom5TN230.nhan_vien
+
+@{
+    ViewBag.Title = "EditStaffProfile";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+<h2 class="text-center profile-heading">Chỉnh sửa thông tin nhân viên</h2>
+<div class="profile-form">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group col-12">
+            <label class="control-label col-md-2"> Mã nhân viên</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" value="@Html.DisplayFor(model => model.Ma)" disabled name="Ma" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2"> Họ tên:</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Ten, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Ten, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SDT, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group button">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu thông tin" class="btn btn-primary" />
+            </div>
+        </div>
+
+    }
+
+</div>

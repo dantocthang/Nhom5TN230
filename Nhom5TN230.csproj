@@ -292,6 +292,10 @@
     <Content Include="Views\Home\DetailFish.cshtml" />
     <Content Include="Views\Cart\CartQuick.cshtml" />
     <Content Include="Views\Cart\CartDetail.cshtml" />
+    <Content Include="Views\Home\StaffProfile.cshtml" />
+    <Content Include="Views\Home\EditStaffProfile.cshtml" />
+    <Content Include="Views\Home\CustomerProfile.cshtml" />
+    <Content Include="Views\Home\EditCustomerProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
