@@ -32,16 +32,16 @@
             <ul class="products__list row" data-aos="fade-up" data-aos-duration="1300">
                 @foreach (var item in Model)
                 {
-                    <li class="products__item col l-3 m-4 c-6">
+                    <a href="/Home/DetailFish/@item.Ma" class="products__item col l-3 m-4 c-6" style="display: flex; text-decoration: none;">
                         <div class="products__image">
-                            <img src="~/Content/assets/img/products/la_han.jpg" alt="" class="products__img">
+                            <img src="~/Content/assets/img/products/@item.hinh_anh.FirstOrDefault().Ten" alt="" class="products__img">
                             <div class="products__sale">-10%</div>
                         </div>
                         <span class="products__type">@item.loai_ca_giong.Ten</span>
                         <div class="products__name">@item.Ten</div>
                         <div class="product__price">@item.Gia đ</div>
 
-                    </li>
+                    </a>
                 }
 
 

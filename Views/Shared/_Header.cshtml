@@ -39,30 +39,30 @@
         <div class="grid wide">
             <div class="header__main-inner">
                 <label for="menu-btn" class="mobile-icon open-icon hide-on-pc"><i class="fa-solid fa-bars"></i></label>
-                <div class="header__logo">
+                <a href="/" class="header__logo" style="display: block">
                     <img src="~/Content/assets/img/logo.png" alt="Logo" class="header__logo-img">
-                </div>
+                </a>
                 <nav class="header__nav">
                     <ul class="header__nav-list">
                         <li class="header__nav-item">
-                            <a href="" class="header__nav-link">Trang chủ</a>
+                            <a href="/" class="header__nav-link">Trang chủ</a>
                         </li>
                         <li class="header__nav-item">
-                            <a href="" class="header__nav-link">Loại cá</a>
+                            <a href="/Home/FishsByType" class="header__nav-link">Loại cá</a>
                         </li>
                         <li class="header__nav-item">
-                            <a href="" class="header__nav-link">Sản phẩm</a>
+                            <a href="/Home/Contact" class="header__nav-link">Liên hệ</a>
                         </li>
-                        <li class="header__nav-item">
+                        @*<li class="header__nav-item">
                             <a href="" class="header__nav-link">Dịch vụ</a>
-                        </li>
+                        </li>*@
                         <li class="header__nav-item">
-                            <a href="" class="header__nav-link">Hướng dẫn</a>
+                            <a href="/" class="header__nav-link">Hướng dẫn</a>
                         </li>
                     </ul>
                 </nav>
                 <div class="header__tools">
-                    <a href="/" class="header__tools-item">
+                    <a href="/Home/SearchFish" class="header__tools-item">
                         <i class="fa-solid fa-magnifying-glass header__tools-icon"></i>
                     </a>
                     <a href="/Cart/CartDetail" class="header__tools-item" style="display: flex;">
@@ -90,7 +90,7 @@
                                 <i class="fa-solid fa-user-large header__tools-icon"></i>
                                 <div class="header__user-expand">
                                     @Html.ActionLink("Hello " + Session["name"].ToString(), "Profile", new { username = Session["username"].ToString() })
-                                    <a href="/Home/Logout">Đăng xuất</a>
+                                    <a style="display: block" href="/Home/Logout">Đăng xuất</a>
                                 </div>
                             </div>
                         }
