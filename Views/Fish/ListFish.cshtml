@@ -71,7 +71,7 @@
                         <th class="table__th">@Html.DisplayNameFor(model => model.NgayTuoi)</th>
                         <th class="table__th">@Html.DisplayNameFor(model => model.Gia)</th>
                         <th class="table__th">@Html.DisplayNameFor(model => model.loai_ca_giong_Ma)</th>
-                        <th></th>
+                        <th class="table__th">></th>
                     </tr>
                 </thead>
             </table>
@@ -93,10 +93,12 @@
                             <td data-label="Ngày tuổi" class="table__td">@Html.DisplayFor(modelItem => item.NgayTuoi)</td>
                             <td data-label="Giá" class="table__td">@Html.DisplayFor(modelItem => item.Gia)</td>
                             <td data-label="Loại cá giống" class="table__td">@Html.DisplayFor(modelItem => item.loai_ca_giong.Ten)</td>
-                            <td data-label="Hành động" class="table__td" style="">
-                                <a class="table__btn table__edit-btn" href="/Fish/EditFish/@item.Ma"><i class="fa-solid fa-pen table__icon table__edit-icon"></i></a>
-                                <a class="table__btn table__info-btn" href="/Fish/EditFish/@item.Ma"><i class="fa-solid fa-info table__icon table__info-icon"></i></a>
-                                <a data-id="@item.Ma" data-display="@item.Ten" class="table__btn table__delete-btn fish-delete-btn" href="/Fish/DeleteFish/@item.Ma"><i data-id="@item.Ma" class="fa-solid fa-xmark table__icon table__delete-icon"></i></a>
+                            <td data-label="Hành động" class="table__td" style="height: 46px;">
+                                <div style="height: 100%; float: right; margin-block: auto; display: flex; gap: 0.5rem">
+                                    <a class="table__btn table__edit-btn" href="/Fish/EditFish/@item.Ma"><i class="fa-solid fa-pen table__icon table__edit-icon"></i></a>
+                                    <a class="table__btn table__info-btn" href="/Fish/EditFish/@item.Ma"><i class="fa-solid fa-info table__icon table__info-icon"></i></a>
+                                    <a data-id="@item.Ma" data-display="@item.Ten" class="table__btn table__delete-btn fish-delete-btn" href="/Fish/DeleteFish/@item.Ma"><i data-id="@item.Ma" class="fa-solid fa-xmark table__icon table__delete-icon"></i></a>
+                                </div>
                                 @*@Html.ActionLink("Edit", "EditFish", new { Ma = item.Ma }) |
                                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                                 @Html.ActionLink("Delete", "DeleteFish", new { Ma = item.Ma })*@

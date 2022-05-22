@@ -113,78 +113,20 @@
             <div class="products__heading">Nổi bật</div>
             <div class="products__sologan">Top lựa chọn bởi khách hàng</div>
             <ul class="products__list row" data-aos="fade-up" data-aos-duration="1300">
-                <li class="products__item col l-3 m-4 c-6">
-                    <span class="products__type">Cá cảnh</span>
-                    <div class="products__name">Cá La Hán</div>
-                    <div class="product__price">1.490.000 VND</div>
-                    <div class="products__image">
-                        <img src="~/Content/assets/img/products/la_han.jpg" alt="" class="products__img">
-                        <div class="products__sale">-10%</div>
-                    </div>
-                </li>
-                <li class="products__item col l-3 m-4 c-6">
-                    <span class="products__type">Cá nước ngọt</span>
-                    <div class="products__name">Cá lóc Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet..</div>
-                    <div class="product__price">30.000 VND</div>
-                    <div class="products__image">
-                        <img src="~/Content/assets/img/products/caloc.jpg" alt="" class="products__img">
-                        <div class="products__sale">-0%</div>
-                    </div>
-                </li>
-                <li class="products__item col l-3 m-4 c-6">
-                    <span class="products__type">Cá cảnh</span>
-                    <div class="products__name">Cá vàng</div>
-                    <div class="product__price">80.000 VND</div>
-                    <div class="products__image">
-                        <img src="~/Content/assets/img/products/cavang.jpg" alt="" class="products__img">
-                        <div class="products__sale">-5%</div>
-                    </div>
-                </li>
-                <li class="products__item col l-3 m-4 c-6">
-                    <span class="products__type">Predator</span>
-                    <div class="products__name">Cá mập</div>
-                    <div class="product__price">&infin; VND</div>
-                    <div class="products__image">
-                        <img src="~/Content/assets/img/products/camap.jpg" alt="" class="products__img">
-                        <div class="products__sale">-999%</div>
-                    </div>
-                </li>
-                <li class="products__item col l-3 m-4 c-6">
-                    <span class="products__type">Wifu</span>
-                    <div class="products__name">Cá "Người"</div>
-                    <div class="product__price">--ERROR-- VND</div>
-                    <div class="products__image">
-                        <img src="~/Content/assets/img/products/nguoica.jpg" alt="" class="products__img">
-                        <div class="products__sale">+10 tỷ</div>
-                    </div>
-                </li>
-                <li class="products__item col l-3 m-4 c-6">
-                    <span class="products__type">Legendary</span>
-                    <div class="products__name">Leviathan</div>
-                    <div class="product__price">-100HP VND</div>
-                    <div class="products__image">
-                        <img src="~/Content/assets/img/products/leviathan.jpg" alt="" class="products__img">
-                        <!-- <div class="products__sale">-999%</div> -->
-                    </div>
-                </li>
-                <li class="products__item col l-3 m-4 c-6">
-                    <span class="products__type">Cá nước mặn</span>
-                    <div class="products__name">Cá hồi Sapa</div>
-                    <div class="product__price">949.000 VND</div>
-                    <div class="products__image">
-                        <img src="~/Content/assets/img/products/cahoi.jpg" alt="" class="products__img">
-                        <div class="products__sale">-1%</div>
-                    </div>
-                </li>
-                <li class="products__item col l-3 m-4 c-6">
-                    <span class="products__type">Cá nước mặn</span>
-                    <div class="products__name">Cá người real</div>
-                    <div class="product__price">136.000 VND</div>
-                    <div class="products__image">
-                        <img src="~/Content/assets/img/products/canguoi.jpg" alt="" class="products__img">
-                        <div class="products__sale">-23%</div>
-                    </div>
-                </li>
+                @foreach (var item in Model)
+                {
+                    <a href="/Home/DetailFish/@item.Ma" class="products__item col l-3 m-4 c-6" style="display: flex; text-decoration: none">
+                        <span class="products__type">@item.loai_ca_giong.Ten</span>
+                        <div class="products__name">@item.Ten</div>
+                        <div class="product__price">@item.Gia đ</div>
+                        <div class="products__image">
+                            <img src="~/Content/assets/img/products/@item.hinh_anh.FirstOrDefault().Ten" alt="" class="products__img">
+                            <div class="products__sale">-10%</div>
+                        </div>
+                    </a>
+                }
+
+
             </ul>
         </div>
     </div>

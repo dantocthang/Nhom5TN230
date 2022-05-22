@@ -54,8 +54,8 @@
                             <a href="/Home/Contact" class="header__nav-link">Liên hệ</a>
                         </li>
                         @*<li class="header__nav-item">
-                            <a href="" class="header__nav-link">Dịch vụ</a>
-                        </li>*@
+                                <a href="" class="header__nav-link">Dịch vụ</a>
+                            </li>*@
                         <li class="header__nav-item">
                             <a href="/" class="header__nav-link">Hướng dẫn</a>
                         </li>
@@ -90,7 +90,12 @@
                                 <i class="fa-solid fa-user-large header__tools-icon"></i>
                                 <div class="header__user-expand">
                                     @Html.ActionLink("Hello " + Session["name"].ToString(), "Profile", new { username = Session["username"].ToString() })
-                                    <a style="display: block" href="/Home/Logout">Đăng xuất</a>
+                                    @if (Session["role"].ToString() == "2")
+                                    {
+                                        <a style="display: block" href="/Admin"><i class="fa-solid fa-gear" style="margin-right: 1rem;"></i>Trang quản lý</a>
+                                    }
+                                    <a style="display: block" href="/Home/Logout"><i class="fa-solid fa-arrow-right-from-bracket" style="margin-right: 1rem;"></i>Đăng xuất</a>
+                                    <a style="display: block" href="/Home/PaymentList"><i class="fa-solid fa-cart-arrow-down" style="margin-right: 1rem;"></i>Đơn hàng của tôi</a>
                                 </div>
                             </div>
                         }

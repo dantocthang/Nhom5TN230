@@ -82,7 +82,7 @@
         color: #fff;
     }
 
-    .table td::before {
+    .table__td::before {
         content: attr(data-label);
         position: absolute;
         left: 0;

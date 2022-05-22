@@ -1,0 +1,103 @@
+﻿@model IEnumerable<Nhom5TN230.don_dat>
+
+@{
+    ViewBag.Title = "PaymentList";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+
+
+
+
+
+
+<div class="checkout">
+    <div class="grid wide">
+        <div class="row d-flex" style="align-items: center; gap: 1rem;">
+            <div class="cart__home">
+                <i class="fa-solid fa-house cart__home-icon"></i>
+            </div>
+            <i class="fa-solid fa-chevron-right"></i>
+            <div class="cart__cart">
+                Đơn hàng
+            </div>
+        </div>
+        <div class="row" style="align-items: center; margin-top: 1rem; margin-bottom: 1.5rem">
+            <div class="col l-8 m-6 c-12 d-flex justify-content-between">
+                <div class="cart__heading">Đơn hàng của tôi</div>
+            </div>
+            <div class="col l-4 m-6 c-12">
+                <button class="cart__download">Tải báo giá</button>
+            </div>
+        </div>
+
+
+
+        @if (Model != null)
+        {
+
+            foreach (var donDat in Model)
+            {
+                <div class="row">
+                    <div class="checkout__grid-header">
+                        <div>Sản phẩm</div>
+                        <div>Đơn giá</div>
+                        <div>Số lượng</div>
+                        <div>Thành tiền</div>
+                    </div>
+
+                    <div class="checkout__grid-body">
+                        @foreach (var chiTiet in donDat.chi_tiet_don_dat)
+                        {
+                            var total = chiTiet.SoLuongDat * chiTiet.DonGia;
+                            <div style="display: flex; gap: 1rem;">
+                                <a href="/" class="checkout__product-image">
+                                    @if (chiTiet.ca_giong.hinh_anh == null)
+                                    {
+                                        <img src="/Content/assets/img/products/default.jpg" alt="" class="cart__product-img">
+                                    }
+                                    else
+                                    {
+                                        <img src="/Content/assets/img/products/@chiTiet.ca_giong.hinh_anh.FirstOrDefault().Ten" alt="" class="cart__product-img">
+                                    }
+
+                                </a>
+                                <div class="cart__product-name">
+                                    <span class="checkout__product-name-text">
+                                        @chiTiet.ca_giong.Ten
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="cart__product-price cart_product-number">
+                                @chiTiet.DonGia
+                            </div>
+                            <div class="cart__product-quantity">
+                                <input type="number" name="quantity" id="quantity" value="@chiTiet.SoLuongDat" disabled>
+                            </div>
+                            <div class="cart__product-total cart_product-number">
+                                @total đ
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="row" style="padding-bottom: 1rem; border-bottom: 1px dashed var(--secondary); margin-bottom: 1rem;" >
+                    <div class="col l-12 m-12 c-12">
+                        <div class="checkout__sum">
+                            <div class="checkout__sum-heading">Tổng thanh toán:</div>
+                            <div class="checkout__sum-number">@donDat.TongTien VND</div>
+                            <div class="checkout__status">Trạng thái: <span>@donDat.trang_thai.Ten</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+            }
+        }
+        <!-- Bat dau For -->
+
+
+
+    </div>
+</div>
+

@@ -6,22 +6,23 @@
 }
 
 <h2 class="text-center profile-heading">Hồ sơ khách hàng</h2>
-<div class="row profile">
-    <div class="profile-img col-5">
-        <img src="~/Content/assets/img/default-user-image.png" alt="User image">
+<div class="row profile" style="width: 70%; margin-inline: auto;">
+    <div class="profile-img col l-5 m-12 c-12" style="">
+        <img src="~/Content/assets/img/default-user-image.png" alt="User image" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover;">
 
     </div>
-    <div class="profile-content col-7">
-        <div class="mb-3">
+    <div class="profile-content col l-7 m-12 c-12">
+        <div class="mb-3" style="margin-left: max(10%, 4rem);">
             <h2 class="profile-name"><span class="profile-label">Họ tên: </span>@Html.DisplayFor(model => model.Ten)</h2>
             <h4 class="profile-info"><span class="profile-label">Tên tài khoản: </span>@Html.DisplayFor(model => model.TenTK)</h4>
             <h4 class="profile-info"><span class="profile-label">Số điện thoại: </span>@Html.DisplayFor(model => model.SDT)</h4>
             <h4 class="profile-info"><span class="profile-label">Địa chỉ: </span>@Html.DisplayFor(model => model.DiaChi)</h4>
+            <div class="button">
+                <a class="btn btn-primary w-50" href="/Home/EditCustomerProfile/@Model.TenTK">Chỉnh sửa thông tin khách hàng </a>
+            </div>
+
         </div>
 
-        <div class="button">
-            <a class="btn btn-primary w-50" href="/Home/EditCustomerProfile/@Model.TenTK">Chỉnh sửa thông tin khách hàng </a>
-        </div>
-
+        
     </div>
 </div>

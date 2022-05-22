@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
+using Nhom5TN230.Models;
 
 namespace Nhom5TN230.Controllers
 {
@@ -13,7 +14,8 @@ namespace Nhom5TN230.Controllers
         FishMarketEntities db = new FishMarketEntities();
         public ActionResult Index()
         {
-            return View();
+            var cgs = from s in db.ca_giong select s;
+            return View(cgs);
         }
 
         public ActionResult About()
@@ -35,61 +37,7 @@ namespace Nhom5TN230.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult Login(string username, string password)
-        //{
-
-        //    if (Regex.IsMatch(username, "^[0-9]{4,20}$"))
-        //    {
-        //        var account = db.nhan_vien.SingleOrDefault(s => s.Ma == username);
-        //        if (account != null)
-        //        {
-        //            if (account.MatKhau == password)
-        //            {
-        //                var userName = account.Ten.ToString();
-        //                Session.Add("userSession", userName);
-
-        //                var role = account.quyen_Ma.ToString();
-        //                Session.Add("role", role);
-
-        //                return Redirect("/Admin");
-        //            }
-        //            else
-        //            {
-        //                ViewBag.errorPassword = "Mật khẩu không đúng.";
-        //            }
-        //        }
-        //        else
-        //        {
-        //            ViewBag.errorUsername = "Tên đăng nhập không đúng.";
-        //        }
-        //    }
-        //    else
-        //    {
-        //        var account = db.khach_hang.SingleOrDefault(s => s.TenTK == username);
-        //        if (account != null)
-        //        {
-        //            if (account.MatKhau == password)
-        //            {
-        //                var userName = account.TenTK.ToString();
-        //                Session.Add("userSession", userName);
-        //                return Redirect("/");
-        //            }
-        //            else
-        //            {
-        //                ViewBag.errorPassword = "Mật khẩu không đúng.";
-        //            }
-        //        }
-        //        else
-        //        {
-        //            ViewBag.errorUsername = "Tên đăng nhập không đúng.";
-        //        }
-        //    }
-
-
-
-        //    return View("Login");
-        //}
+        
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
@@ -148,7 +96,8 @@ namespace Nhom5TN230.Controllers
 
         public ActionResult Logout()
         {
-            Session["userSession"] = null;
+            Session["username"] = null;
+            Session["name"] = null;
             Session["role"] = null;
             return Redirect("/");
         }
@@ -307,6 +256,62 @@ namespace Nhom5TN230.Controllers
 
             return View();
         }
+
+
+        public ActionResult PaymentList()
+        {
+            if (Session["username"] == null)
+                return RedirectToAction("Login");
+            var username = Session["username"].ToString();
+
+            var khach_hang = db.khach_hang.FirstOrDefault(kh => kh.TenTK == username);
+            var don_dat = from dd in db.don_dat where dd.khach_hang_Ma == khach_hang.Ma select dd;
+            return View(don_dat);
+        }
+
+        public ActionResult Payment(string id)
+        {
+            long? total = 0;
+            if (id == null)
+                return RedirectToAction("Login");
+            var khachHang = db.khach_hang.SingleOrDefault(s => s.TenTK == id);
+            var cart = (List<CartItem>)Session["ShoppingCart"];
+            if (cart != null)
+            {
+                don_dat donDat = new don_dat();
+                donDat.khach_hang_Ma = khachHang.Ma;
+                donDat.NgayDat = DateTime.Today;
+                foreach (CartItem item in cart)
+                {
+                    total += item.Quantity * item.productOrder.Gia;
+
+                }
+                donDat.TongTien = total;
+                donDat.trang_thai_Ma = 1; //Trạng thái mặc định chờ duyệt
+                db.don_dat.Add(donDat);
+                db.SaveChanges();
+                foreach (CartItem item in cart)
+                {
+                    chi_tiet_don_dat chiTiet = new chi_tiet_don_dat();
+                    chiTiet.don_dat_Ma = donDat.Ma;
+                    chiTiet.ca_giong_Ma = item.productOrder.Ma;
+                    chiTiet.SoLuongDat = item.Quantity;
+                    chiTiet.DonGia = item.productOrder.Gia;
+                    db.chi_tiet_don_dat.Add(chiTiet);
+                    db.SaveChanges();
+                }
+                Session.Remove("ShoppingCart");
+                return RedirectToAction("PaymentList");
+            }
+            else
+            {
+                ViewBag.errorCart = "Giỏ hàng rỗng";
+                return Redirect("/");
+            }
+
+
+        }
+
 
 
 
