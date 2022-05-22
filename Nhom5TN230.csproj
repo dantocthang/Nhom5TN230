@@ -296,6 +296,8 @@
     <Content Include="Views\Home\EditStaffProfile.cshtml" />
     <Content Include="Views\Home\CustomerProfile.cshtml" />
     <Content Include="Views\Home\EditCustomerProfile.cshtml" />
+    <Content Include="Views\Home\SearchFishes.cshtml" />
+    <Content Include="Views\Home\SearchFish.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

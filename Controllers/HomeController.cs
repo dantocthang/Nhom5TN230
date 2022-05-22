@@ -276,6 +276,39 @@ namespace Nhom5TN230.Controllers
         }
 
 
+        public ActionResult SearchFish()
+        {
+            var data = from s in db.ca_giong select s;
+            return View(data);
+        }
+
+        [HttpPost]
+        public ActionResult SearchFish(string search)
+        {
+            var data = from s in db.ca_giong select s;
+            if (search != "")
+            {
+                data = data.Where(s => s.Ten.Contains(search));
+            }
+            return View(data);
+        }
+
+
+        [HttpPost]
+        public ActionResult SearchFishes(string search)
+        {
+
+            if (search != "")
+            {
+                var data = from c in db.ca_giong select c;
+                data = data.Where(s => s.Ten.Contains(search));
+                return View(data);
+            }
+
+            return View();
+        }
+
+
 
     }
 }

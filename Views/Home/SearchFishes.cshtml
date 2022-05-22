@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Nhom5TN230.ca_giong>
+
+@{
+    Layout = null;
+}
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        <a href="/Home/DetailFish/@item.Ma" class="search__item">
+            @if (item.hinh_anh == null)
+            {
+                <img src="/Content/assets/img/products/default.jpg" alt="" class="search__img">
+            }
+            else
+            {
+                <img src="~/Content/assets/img/products/cahoi.jpg" alt="" class="search__img">
+            }
+            <div class="search__name">
+                <span>
+                    @item.Ten
+                </span>
+            </div>
+            <div data-gia="@item.Gia" class="search__price">
+                @item.Gia đ
+            </div>
+        </a>
+    }
+}

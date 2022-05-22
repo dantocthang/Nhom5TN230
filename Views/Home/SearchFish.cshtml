@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Nhom5TN230.ca_giong>
+
+@{ ViewBag.Title = "FishsByType";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml"; }
+
+
+<script>
+    $(document).ready(function () {
+        $("#search").keyup(function () {
+            $('#here').show();
+            $.ajax({
+                type: 'POST',
+                url: '/Home/SearchFishes',
+                data: {
+                    search: $("#search").val().toString(),
+                },
+                success: function (data) {
+                    $("#here").html(data);
+                }
+            });
+        });
+    });
+</script>
+
+<div class="products" style="margin-top: 2rem">
+    <div class="grid wide">
+        <div class="products__inner">
+            <div class="input-group-icon pe-2" style="position: relative; width: min(600px, 70%); background: #ebf3f7; border-radius: 10px; ">
+                <form method="post" asp-action="/Home/SearchFish" style="display: flex; align-items: center; padding-inline: 1rem; ">
+                    
+                        <i class="fas fa-search input-box-icon text-primary"></i>
+                        <input type="text" placeholder="Tìm kiếm sản phẩm" id="search" name="search" style="flex: 1; border: none; outline: none;  height: 40px;background: transparent; padding-left: 1rem;"
+                               aria-label="Search" />
+                    
+                </form>
+                <div id="here" class="header__cart-item"
+                     style="position: absolute; top: calc(100% + 10px); border-radius: 0.5rem; background-color: white; z-index:10; width: 100%;border: 1px solid #9cadee;">
+
+                </div>
+            </div>
+            <div class="products__heading">Tìm cá</div>
+            <div class="products__sologan">Danh sách @ViewBag.displayName</div>
+            <ul class="products__list row" data-aos="fade-up" data-aos-duration="1300" >
+                @foreach (var item in Model)
+                {
+                    <li class="products__item col l-3 m-4 c-6">
+                        <div class="products__image">
+                            <img src="~/Content/assets/img/products/cahoi.jpg" alt="" class="products__img">
+                            <div class="products__sale">-10%</div>
+                        </div>
+                        <span class="products__type">@item.loai_ca_giong.Ten</span>
+                        <div class="products__name">@item.Ten</div>
+                        <div class="product__price">@item.Gia đ</div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
