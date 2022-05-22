@@ -34,7 +34,7 @@
                     
                 </form>
                 <div id="here" class="header__cart-item"
-                     style="position: absolute; top: calc(100% + 10px); border-radius: 0.5rem; background-color: white; z-index:10; width: 100%;border: 1px solid #9cadee;">
+                     style="position: absolute; top: calc(100% + 10px); border-radius: 0.5rem; background-color: white; z-index:10; width: 100%;border: 1px solid #9cadee; display: flex; flex-direction: column; gap: 1rem;">
 
                 </div>
             </div>
@@ -45,7 +45,7 @@
                 {
                     <li class="products__item col l-3 m-4 c-6">
                         <div class="products__image">
-                            <img src="~/Content/assets/img/products/cahoi.jpg" alt="" class="products__img">
+                            <img src="/Content/assets/img/products/@item.hinh_anh.FirstOrDefault().Ten" alt="" class="products__img">
                             <div class="products__sale">-10%</div>
                         </div>
                         <span class="products__type">@item.loai_ca_giong.Ten</span>

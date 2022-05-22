@@ -64,7 +64,7 @@
         </p>
         <div class="fish__inner">
             <div class="col l-9 fish__inner row">
-                <ul class="col l-5 fish__image images-list">
+                <ul class="col l-5 fish__image images-list" style="overflow: hidden;">
                     @foreach (var item in Model.hinh_anh)
                     {
                         <li><img class="fish__img" src="~/Content/assets/img/products/@item.Ten" alt="@item.Ten"></li>
