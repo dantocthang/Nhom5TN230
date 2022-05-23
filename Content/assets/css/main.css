@@ -60,6 +60,23 @@ table {
     border-spacing: 0;
 }
 
+h1 {
+    color: #337ab7;
+    font-weight: 600;
+    font-family: Montserrat;
+    font-size: 1.8rem;
+    margin-left: 1.5rem;
+    margin-top: 1rem;
+}
+
+h4{
+    font-size: 1.2rem;
+    color: var(--secondary);
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-left: 1.5rem;
+}
+
 /* Start of content */
 .app {
     overflow: hidden;

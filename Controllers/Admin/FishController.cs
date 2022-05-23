@@ -63,21 +63,21 @@ namespace Nhom5TN230.Controllers.Admin
             return View("CreateFishType", data);
         }
 
-        public ActionResult EditFishType(int Ma)
+        public ActionResult EditFishType(int id)
         {
-            var ft = db.loai_ca_giong.Find(Ma);
+            var ft = db.loai_ca_giong.Find(id);
             return View(ft);
         }
 
         [HttpPost, ActionName("EditFishType")]
-        public ActionResult EditFishTypePost(int Ma)
+        public ActionResult EditFishTypePost(int id)
         {
             var data = new loai_ca_giong();
             try
             {
                 if (ModelState.IsValid)
                 {
-                    data = db.loai_ca_giong.Find(Ma);
+                    data = db.loai_ca_giong.Find(id);
                     if (TryUpdateModel(data, "", new string[] { "Ma", "Ten" }))
                     {
                         db.Entry(data).State = EntityState.Modified;

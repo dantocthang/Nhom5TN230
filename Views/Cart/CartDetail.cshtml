@@ -121,7 +121,7 @@
                 url: '/Cart/AddToCart',
                 data: { id, Quantity },
                 success: function (data) {
-                    TongTien()
+                    
                     $("#Cart_Amount").html(data.ItemAmount);
                     if (data.ThongBao != "") {
                         Swal.fire({
@@ -130,6 +130,9 @@
                             text: ` ${data.ThongBao} `,
 
                         })
+                        @*console.log(currentQuantity)*@
+                        e.target.dataset.value = currentQuantity
+                        e.target.value = currentQuantity
                     }
                     $.ajax({
                         type: 'GET',
@@ -140,6 +143,7 @@
 
                         }
                     })
+                    TongTien()
                 }
             })
         })

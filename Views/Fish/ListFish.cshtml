@@ -52,26 +52,26 @@
 
 
 <div class="div_trong_admin">
-    <h2>ds_Ca_Giong</h2>
+    <h1>Cá giống</h1>
 
-    <p>
-        @Html.ActionLink("Them ca giong moi", "CreateFish")
-    </p>
+    <h4>
+        @Html.ActionLink("Thêm cá giống", "CreateFish")
+    </h4>
 
    
-    <div class="admin-table" style="margin-inline: auto">
+    <div class="admin-table" style="margin-inline: auto; margin-top: 1rem;">
         <div class="table__head-wrapper">
             <table class="table" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 0;">
                 <thead class="table__head">
                     <tr class="table__tr">
                         <th class="table__th">STT</th>
-                        <th class="table__th">@Html.DisplayNameFor(model => model.Ten)</th>
-                        <th class="table__th">@Html.DisplayNameFor(model => model.MoTa)</th>
-                        <th class="table__th">@Html.DisplayNameFor(model => model.SoLuong)</th>
-                        <th class="table__th">@Html.DisplayNameFor(model => model.NgayTuoi)</th>
-                        <th class="table__th">@Html.DisplayNameFor(model => model.Gia)</th>
-                        <th class="table__th">@Html.DisplayNameFor(model => model.loai_ca_giong_Ma)</th>
-                        <th class="table__th">></th>
+                        <th class="table__th">Tên cá</th>
+                        <th class="table__th">Mô tả</th>
+                        <th class="table__th">Số lượng sẵn có</th>
+                        <th class="table__th">Ngày tuổi</th>
+                        <th class="table__th">Đơn giá</th>
+                        <th class="table__th">Loại cá</th>
+                        <th class="table__th"></th>
                     </tr>
                 </thead>
             </table>

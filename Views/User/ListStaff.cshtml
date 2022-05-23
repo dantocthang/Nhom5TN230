@@ -42,30 +42,30 @@
     })
 </script>
 
-<h2>list_staff</h2>
+<h1>Nhân viên</h1>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<h4>
+    @Html.ActionLink("Thêm nhân viên", "AddStaff")
+</h4>
+<table class="table" style="margin-top: 1rem;">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Ma)
+            Mã nhân viên
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Ten)
+            Họ tên
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SDT)
+            Số điện thoại
+        </th>
+        @*<th>
+            Mật khẩu
+        </th>*@
+        <th>
+            Địa chỉ
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MatKhau)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.quyen_Ma)
+            Quyền
         </th>
         <th></th>
     </tr>
@@ -82,9 +82,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.SDT)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.MatKhau)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.DiaChi)
             </td>

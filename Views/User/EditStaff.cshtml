@@ -5,14 +5,14 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>edit_staff</h2>
+<h1>Chỉnh sửa thông tin nhân viên</h1>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>nhan_vien</h4>
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -59,12 +59,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Lưu" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Về danh sách", "ListStaff")
 </div>
