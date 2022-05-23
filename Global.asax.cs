@@ -16,6 +16,8 @@ namespace Nhom5TN230
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            //var role = Session["role"] ?? null;
+            //if (role == null) RedirectToRouteResult("/Home/Index");
         }
     }
 }

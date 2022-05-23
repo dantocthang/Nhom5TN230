@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Nhom5TN230.don_dat>
+
+@{
+    ViewBag.Title = "OrderList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="cart">
+    <div class="grid wide">
+        <div class="row d-flex" style="align-items: center; gap: 1rem;">
+            <div class="cart__home">
+                <i class="fa-solid fa-house cart__home-icon"></i>
+            </div>
+            <i class="fa-solid fa-chevron-right"></i>
+            <div class="cart__cart">
+                Danh sách đơn
+            </div>
+        </div>
+
+        <div class="admin-table" style="margin-inline: auto">
+            <div class="table__head-wrapper">
+                <table class="table" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 0;">
+                    <thead class="table__head">
+                        <tr class="table__tr">
+                            <th class="table__th">STT</th>
+                            <th class="table__th">Mã</th>
+                            <th class="table__th">Ngày đặt</th>
+                            <th class="table__th">Ngày huỷ</th>
+                            <th class="table__th">Mã khách hàng</th>
+                            <th class="table__th">Tổng tiền</th>
+                            <th class="table__th">Trạng thái</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+
+            @{ var stt = 1;}
+            <div class="table__body-wrapper">
+                <table class="table body" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 0;">
+
+                    <tbody class="table__body">
+                        @foreach (var item in Model)
+                        {
+                            <tr class="table__tr">
+                                <td data-label="ID" class="table__td"> @stt</td>
+                                <td data-label="Tên cá" class="table__td">@Html.DisplayFor(modelItem => item.Ma)</td>
+                                <td data-label="Mô tả" class="table__td">@Html.DisplayFor(modelItem => item.NgayDat)</td>
+                                <td data-label="Số lượng" class="table__td">@Html.DisplayFor(modelItem => item.NgayHuy)</td>
+                                <td data-label="Ngày tuổi" class="table__td">@Html.DisplayFor(modelItem => item.khach_hang_Ma)</td>
+                                <td data-label="Loại cá giống" class="table__td">@Html.DisplayFor(modelItem => item.TongTien)</td>
+                                <td data-label="Loại cá giống" class="table__td">@Html.DisplayFor(modelItem => item.trang_thai.Ten)</td>
+                                <td data-label="Hành động" class="table__td" style="height: 46px;">
+                                    <div style="height: 100%; float: right; margin-block: auto; display: flex; gap: 0.5rem">
+                                        <a class="table__btn table__info-btn" href="/Order/OrderDetail/@item.Ma"><i class="fa-solid fa-info table__icon table__info-icon"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+stt++;
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

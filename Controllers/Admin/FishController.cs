@@ -11,14 +11,30 @@ using System.Web.Mvc;
 namespace Nhom5TN230.Controllers.Admin
 {
 
+
     public class FishController : Controller
     {
+        public int CheckRole(int nhanvien)
+        {
+            if (Session["role"] == null) return 0;
+            else
+            {
+                var role = Session["role"].ToString();
+                if (role == "Admin") return 1;
+                if (nhanvien == 0) return 2;
+            }
+            return 1;
+        }
         FishMarketEntities db = new FishMarketEntities();
 
         public ActionResult FishType()
         {
             //var data = from s in db.loai_ca_giong select s;
-            return View();
+            if (CheckRole(1) == 1)
+                return View();
+            else if (CheckRole(1) == 2)
+                return RedirectToAction("Index", "Admin");
+            else return RedirectToAction("Index", "Home");
         }
 
         public ActionResult FishTypes()
@@ -36,6 +52,10 @@ namespace Nhom5TN230.Controllers.Admin
         [ValidateInput(true)]
         public ActionResult CreateFishType(String Ten)
         {
+            if (CheckRole(1) == 1)
+                return View();
+            else if (CheckRole(1) == 2)
+                return RedirectToAction("Index", "Admin");
             var data = new loai_ca_giong();
             try
             {
@@ -65,6 +85,10 @@ namespace Nhom5TN230.Controllers.Admin
 
         public ActionResult EditFishType(int id)
         {
+            if (CheckRole(1) == 1)
+                return View();
+            else if (CheckRole(1) == 2)
+                return RedirectToAction("Index", "Admin");
             var ft = db.loai_ca_giong.Find(id);
             return View(ft);
         }
@@ -72,6 +96,10 @@ namespace Nhom5TN230.Controllers.Admin
         [HttpPost, ActionName("EditFishType")]
         public ActionResult EditFishTypePost(int id)
         {
+            if (CheckRole(1) == 1)
+                return View();
+            else if (CheckRole(1) == 2)
+                return RedirectToAction("Index", "Admin");
             var data = new loai_ca_giong();
             try
             {
@@ -102,6 +130,10 @@ namespace Nhom5TN230.Controllers.Admin
 
         public ActionResult DeleteFishType(int Ma)
         {
+            if (CheckRole(1) == 1)
+                return View();
+            else if (CheckRole(1) == 2)
+                return RedirectToAction("Index", "Admin");
             var data = db.loai_ca_giong.Find(Ma);
 
             if (data != null)
@@ -129,8 +161,14 @@ namespace Nhom5TN230.Controllers.Admin
         // Section Cá giống
         public ActionResult ListFish()
         {
-            var list = from s in db.ca_giong select s;
-            return View(list);
+            if (CheckRole(1) == 1)
+            {
+                var list = from s in db.ca_giong select s;
+                return View(list);
+            }
+            else if (CheckRole(1) == 2)
+                return RedirectToAction("Index", "Admin");
+
         }
 
 
@@ -138,6 +176,10 @@ namespace Nhom5TN230.Controllers.Admin
 
         public ActionResult CreateFish()
         {
+            if (CheckRole(1) == 1)
+                return View();
+            else if (CheckRole(1) == 2)
+                return RedirectToAction("Index", "Admin");
             var item = db.loai_ca_giong.ToList();
             ViewBag.data = item;
             return View();
@@ -148,6 +190,10 @@ namespace Nhom5TN230.Controllers.Admin
         [ValidateInput(true)]
         public ActionResult CreateFish(ca_giong ca_giongform, List<HttpPostedFileBase> image)
         {
+            if (CheckRole(1) == 1)
+                return View();
+            else if (CheckRole(1) == 2)
+                return RedirectToAction("Index", "Admin");
             var count = 0;
             string[] imageNames = new string[] { };
             try
@@ -260,7 +306,7 @@ namespace Nhom5TN230.Controllers.Admin
                     // luu nhieu anh vao database
                     foreach (var item in image)
                     {
-                        
+
                         hinh_anh hinh = new hinh_anh();
                         hinh.Ten = imageNames[i];
                         i++;
@@ -283,6 +329,10 @@ namespace Nhom5TN230.Controllers.Admin
 
         public ActionResult EditFish(int? id)
         {
+            if (CheckRole(1) == 1)
+                return View();
+            else if (CheckRole(1) == 2)
+                return RedirectToAction("Index", "Admin");
             var list = db.ca_giong.SingleOrDefault(s => s.Ma == id);
             if (list == null)
             {
@@ -298,6 +348,10 @@ namespace Nhom5TN230.Controllers.Admin
         [ValidateInput(false)]
         public ActionResult EditFish(int id)
         {
+            if (CheckRole(1) == 1)
+                return View();
+            else if (CheckRole(1) == 2)
+                return RedirectToAction("Index", "Admin");
             var count = 0;
             var ca = db.ca_giong.Find(id);
             if (ModelState.IsValid)
@@ -376,6 +430,10 @@ namespace Nhom5TN230.Controllers.Admin
         [HttpPost]
         public ActionResult DeleteFish(int id)
         {
+            if (CheckRole(1) == 1)
+                return View();
+            else if (CheckRole(1) == 2)
+                return RedirectToAction("Index", "Admin");
             ca_giong ca = db.ca_giong.SingleOrDefault(n => n.Ma == id);
             if (ca == null)
             {

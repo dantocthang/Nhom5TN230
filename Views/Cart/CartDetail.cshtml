@@ -92,9 +92,12 @@
 
                     </div>
                     <div class="cart__checkout-vat">(Đã bao gồm thuế VAT)</div>
-                    <a href="/Home/Payment/@Session["username"]" class="cart__checkout-btn">
-                        Thanh toán
-                    </a>
+                    @if (Session["role"] == null)
+                    {
+                        <a href="/Home/Payment/@Session["username"]" class="cart__checkout-btn">
+                            Thanh toán
+                        </a>
+                    }
 
                 </div>
             </div>
@@ -121,7 +124,7 @@
                 url: '/Cart/AddToCart',
                 data: { id, Quantity },
                 success: function (data) {
-                    
+
                     $("#Cart_Amount").html(data.ItemAmount);
                     if (data.ThongBao != "") {
                         Swal.fire({

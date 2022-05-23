@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Nhom5TN230.chi_tiet_don_dat>
+
+@{
+    ViewBag.Title = "OrderDetail";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="cart">
+    <div class="grid wide">
+        <div class="row d-flex" style="align-items: center; gap: 1rem;">
+            <div class="cart__home">
+                <i class="fa-solid fa-house cart__home-icon"></i>
+            </div>
+            <i class="fa-solid fa-chevron-right"></i>
+            <div class="cart__cart">
+                Chi tiết đơn hàng
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col l-8 m-12 c-12">
+                <div class="cart__grid-header">
+                    <div>Sản phẩm</div>
+                    <div>Đơn giá</div>
+                    <div>Số lượng</div>
+                    <div>Thành tiền</div>
+                </div>
+
+                <div class="cart__grid-body">
+
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+
+                            var total = item.SoLuongDat * item.DonGia;
+                            <a href="/" class="cart__product-image">
+                                @if (item.ca_giong.hinh_anh == null)
+                                {
+                                    <img src="/Content/assets/img/products/default.jpg" alt="" class=cart__product-img> }
+                                else
+                                {
+                                    <img src="/Content/assets/img/products/@item.ca_giong.hinh_anh.FirstOrDefault().Ten" alt="" class=cart__product-img>}
+                            </a>
+                            <div class="cart__product-name">
+                                <span>
+                                    @item.ca_giong.Ten
+                                </span>
+                            </div>
+                            <div data-gia="@item.ca_giong.Gia" class="cart__product-price cart_product-number">
+                                @item.DonGia đ
+                            </div>
+                            <div class="cart__product-quantity">
+                                @item.SoLuongDat
+                            </div>
+                            <div class="cart__product-total cart_product-number">
+                                @total đ
+                            </div>}
+                    }
+
+                </div>
+            </div>
+            <div class="col l-4 m-12 c-12">
+                <div class="cart_checkout">
+                    <h2>Chọn hành động</h2>
+
+                    @if (Model.FirstOrDefault().don_dat.trang_thai_Ma == 1)
+                    {
+                        <a href="/Order/OrderProcess?ma_don=@Model.FirstOrDefault().don_dat.Ma&ma_trang_thai=2" class="cart__checkout-btn">
+                            Duyệt đơn hàng
+                        </a>
+                    }
+
+                    @if (Model.FirstOrDefault().don_dat.trang_thai_Ma == 2)
+                    {
+                        <a href="/Order/OrderProcess?ma_don=@Model.FirstOrDefault().don_dat.Ma&ma_trang_thai=3" class="cart__checkout-btn">
+                            Giao hàng
+                        </a>
+                    }
+                    @if (Model.FirstOrDefault().don_dat.trang_thai_Ma == 3)
+                    {
+                        <a href="/Order/OrderProcess?ma_don=@Model.FirstOrDefault().don_dat.Ma&ma_trang_thai=4" class="cart__checkout-btn">
+                            Xác nhận đã giao hàng
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

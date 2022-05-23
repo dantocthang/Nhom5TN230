@@ -52,7 +52,7 @@ namespace Nhom5TN230.Controllers
                         var userName = account.Ten.ToString();
                         Session.Add("username", account.Ma.ToString());
                         Session.Add("name", userName);
-                        var role = account.quyen_Ma.ToString();
+                        var role = account.quyen.Ten.ToString();
                         Session.Add("role", role);
 
                         return Redirect("/Admin");
