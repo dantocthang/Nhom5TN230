@@ -93,8 +93,8 @@
             </td>
             <td>
                 <a class="table__btn table__edit-btn" href="/User/EditStaff/@item.Ma"><i class="fa-solid fa-pen table__icon table__edit-icon"></i></a>
-                <a class="table__btn table__info-btn" href="/User/InfoStaff/@item.Ma"><i class="fa-solid fa-info table__icon table__info-icon"></i></a>
-                <a id="staff-delete-btn" data-id="@item.Ma" data-display="@item.Ten" class="table__btn table__delete-btn" href="/User/DeleteStaff"><i class="fa-solid fa-xmark table__icon table__delete-icon"></i></a>
+                @*<a class="table__btn table__info-btn" href="/User/InfoStaff/@item.Ma"><i class="fa-solid fa-info table__icon table__info-icon"></i></a>*@
+                <a id="staff-delete-btn" data-id="@item.Ma" data-display="@item.Ten" class="table__btn table__delete-btn" href="/User/DeleteStaff"><i class="fa-solid fa-xmark table__icon table__delete-icon" data-id="@item.Ma"></i></a>
                 @*@Html.ActionLink("Edit", "EditStaff", new { id = item.Ma }) |
         @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
         @Html.ActionLink("Delete", "DeleteStaff", new { id = item.Ma })*@
